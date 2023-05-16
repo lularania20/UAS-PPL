@@ -16,7 +16,7 @@ class CreatePaketWisata extends Migration
         Schema::create('paket_wisata', function (Blueprint $table) {
             $table->id();
             $table->string('nama_paket');
-            $table->string('kategori_paket')->nullable()->constrained('kategori_paket');
+            $table->string('id_kategori_paket')->nullable()->constrained('kategori_paket');
             $table->string('id_wisata_1')->nullable()->constrained('wisata');
             $table->string('id_wisata_2')->nullable()->constrained('wisata');
             $table->string('id_wisata_3')->nullable()->constrained('wisata');
