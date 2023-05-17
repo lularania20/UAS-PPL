@@ -3,143 +3,160 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\KategoriWisata;
+// use App\Models\KategoriPaket;
 use App\Models\Wisata;
+use App\Models\PaketWisata;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+// use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use RealRashid\SweetAlert\Facades\Alert;
 
-class WisataController extends Controller
+class PaketWisataController extends Controller
 {
     public function __construct()
     {
-        // $this->middleware('auth');
-        $this->kategori_wisata = new KategoriWisata();
+       // $this->middleware('auth');
+        // $this->kategori_paket = new KategoriPaket();
         $this->wisata = new Wisata();
+        $this->paket_wisata = new PaketWisata();
     }
 
     public function index(Request $request)
     {
 
+
         if ($request->has('search')) {
-            $wisata = $this->wisata
+            $paket_wisata = $this->paket_wisata
                 ->allData()
-                ->where('nama_wisata', 'LIKE', '%' . $request->search . '%')
+                ->where('nama_paket', 'LIKE', '%' . $request->search . '%')
                 ->paginate(20);
         } else {
-            $wisata = $this->wisata
+            $paket_wisata = $this->paket_wisata
                 ->allData()
                 ->paginate(20);
         }
 
         $data = [
-            'wisata' =>$wisata,
+            'paket_wisata' =>$paket_wisata,
         ];
 
-        return view('/admin/wisata/index', $data);
+        return view('/admin/paket-wisata/index', $data);
     }
 
     public function add()
     {
-        $data = [
-            'kategori_wisata' => $this->kategori_wisata->allData(),
-        ];
-
-        return view('/admin/wisata/add', $data);
+        $wisata = Wisata::select('id', 'nama_wisata')->get();
+    
+        return view('/admin/paket-wisata/add', compact('wisata'));
     }
 
     public function store(Request $request)
     {
         $request->validate(
             [
-                'nama_wisata' => 'required',
-                'id_kategori_wisata' => 'required',
-                'editor1' => 'required',
-                'harga_wisata' => 'required',
-                'gambar_wisata' => 'required',
-                'alamat_wisata' => 'required',
+                // 'id_kategori_paket' => 'required',
+                'nama_paket' => 'required',
+                'id_wisata_1' => 'required',
+                'id_wisata_2' => 'required',
+                'id_wisata_3' => 'required',
+                'id_wisata_4' => 'required',
+                'deskripsi_paket' => 'required',
+                'harga_paket' => 'required',
+                'foto_paket' => 'required',
             ],
             [
-                'nama_wisata' => 'Wajib terisi',
-                'id_kategori_wisata' => 'Wajib terisi',
-                'editor1' => 'Wajib terisi',
-                'harga_wisata' => 'Wajib terisi',
-                'alamat_wisata' => 'Wajib terisi',
-                'gambar_wisata.required' => 'Mohon unggah gambar wisata.',
-                'gambar_wisata.max' => 'Ukuran maksimal 2 Mb.',
-                'gambar_wisata.mimes' => 'Unggah file dalam format JPEG, JPG, dan PNG.',
+                // 'id_kategori_paket' => 'Wajib terisi',
+                'nama_paket' => 'Wajib terisi',
+                'id_wisata_1' => 'Wajib terisi',
+                'id_wisata_2' => 'Wajib terisi',
+                'id_wisata_3' => 'Wajib terisi',
+                'id_wisata_4' => 'Wajib terisi',
+                'deskripsi_paket' => 'Wajib terisi',
+                'harga_paket' => 'Wajib terisi',
+                'foto_paket.required' => 'Mohon unggah gambar paket wisata.',
+                'foto_paket.max' => 'Ukuran maksimal 2 Mb.',
+                'foto_paket.mimes' => 'Unggah file dalam format JPEG, JPG, dan PNG.',
             ]
         );
 
-        $file = Request()->gambar_wisata;
-        $fileName = Request()->nama_wisata . '.' . $file->extension();
-        $file -> move(public_path('gambar_wisata'), $fileName);
+        $file = Request()->foto_paket;
+        $fileName = Request()->foto_paket . '.' . $file->extension();
+        $file -> move(public_path('foto_paket'), $fileName);
 
-        $wisata = Wisata::create([
-            'nama_wisata' => Request()->nama_wisata,
-            'id_kategori_wisata' => Request()->id_kategori_wisata,
-            'deskripsi_wisata' => Request()->editor1,
-            'harga_wisata' => Request()->harga_wisata,
-            'alamat_wisata' => Request()->alamat_wisata,
-            'gambar_wisata' => $fileName,
+        $paket_wisata = PaketWisata::create([
+            // 'id_kategori_paket' => Request()->id_kategori_paket,
+            'nama_paket' => Request()->nama_paket,
+            'id_wisata_1' => Request()->id_wisata_1,
+            'id_wisata_2' => Request()->id_wisata_2,
+            'id_wisata_3' => Request()->id_wisata_3,
+            'id_wisata_4' => Request()->id_wisata_4,
+            'deskripsi_paket' => Request()->deskripsi_paket,
+            'harga_paket' => Request()->harga_paket,
+            'foto_paket' => $fileName,
         ]);
 
-        if ($wisata) {
-            Alert::success('Sukses!', 'Wisata Berhasil Ditambahkan!');
+        if ($paket_wisata) {
+            Alert::success('Sukses!', 'Paket Wisata Berhasil Ditambahkan!');
         }
 
-        return redirect('/admin/wisata');
+        return redirect('/admin/paket-wisata');
     }
 
     public function detail($id)
     {
-        if (!$this->wisata->detailData($id)) {
+        if (!$this->paket_wisata->detailData($id)) {
             abort(404);
         }
 
-        $wisata = $this->wisata->detailData($id);
+        $paket_wisata = $this->paket_wisata->detailData($id);
 
         $data = [
-            'wisata' => $this->wisata->detailData($id),
+            'paket_wisata' => $this->paket_wisata->detailData($id),
             // 'gambar_wisata' => Storage::url('public/' . $this->wisata->detailData($id)->gambar_wisata),
         ];
 
-        return view('admin/wisata/detail', $data);
+        return view('admin/paket-wisata/detail', $data);
     }
 
     public function edit($id)
     {
-        $wisata = $this->wisata->detailData($id);
-        if ((!$wisata)) {
+        $paket_wisata = $this->paket_wisata->detailData($id);
+        if ((!$paket_wisata)) {
             abort(404);
         }
 
-        $wisata = Wisata::find($id);
+        $paket_wisata = PaketWisata::find($id);
         // $gambar_wisata = Storage::url('public/' . $this->wisata->detailData($id)->gambar_wisata);
 
         $data = [
-            'wisata' => $wisata,
-            'kategori_wisata' => $this->kategori_wisata->allData(),
-            'kategori' => DB::table('kategori_wisata')->where('id', $wisata->id_kategori_wisata)->first(),
+            'paket_wisata' => $paket_wisata,
+            // 'kategori_paket' => $this->kategori_paket->allData(),
+            // 'kategoripaket' => DB::table('kategori_paket')->where('id', $paket_wisata->id_kategori_paket)->first(),
+            'opsi_paket'  => $this->wisata->allData(),
+            'wisata1' => DB::table('nama_wisata')->where('id', $paket_wisata->id_wisata_1)->first(),
+            'wisata2' => DB::table('nama_wisata')->where('id', $paket_wisata->id_wisata_2)->first(),
+            'wisata3' => DB::table('nama_wisata')->where('id', $paket_wisata->id_wisata_3)->first(),
+            'wisata4' => DB::table('nama_wisata')->where('id', $paket_wisata->id_wisata_4)->first(),
             // 'gambar_wisata' => $gambar_wisata,
         ];
 
-        return view('admin/wisata/edit', $data);
+        return view('admin/paket-wisata/edit', $data);
     }
 
     public function update($id, Request $request)
     {
         $request->validate(
             [
-                'nama_wisata' => 'required',
-                'id_kategori_wisata' => 'required',
-                'editor1' => 'required',
-                'harga_wisata' => 'required',
-                'gambar_wisata' => 'required|file|max:2048|mimes:jpeg,jpg,png',
-                'alamat_wisata' => 'required',        
+                'nama_paket' => 'required',
+                'id_wisata_1' => 'required',
+                'id_wisata_2' => 'required',
+                'id_wisata_3' => 'required',
+                'id_wisata_4' => 'required',
+                'deskripsi_paket' => 'required',
+                'harga_paket' => 'required',
+                'foto_paket' => 'required',
             ],
             [
                 'nama_wisata' => 'Wajib terisi',
@@ -180,7 +197,7 @@ class WisataController extends Controller
             Alert::success('Sukses!', 'Data wisata Kesehatan Berhasil Diubah!');
         }
 
-        return redirect('/admin/wisata');
+        return redirect('/admin/paket-wisata');
     }
 
     public function destroy($id)
@@ -201,7 +218,7 @@ class WisataController extends Controller
         if ($wisata) {
             Alert::success('Sukses!', 'Data Berhasil Dihapus!');
         }
-        return redirect('admin/wisata');
+        return redirect('admin/paket-wisata');
     }
 
     // public function apply($id)

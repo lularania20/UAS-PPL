@@ -10,7 +10,7 @@ class DashboardController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth');
+        // $this->middleware('auth');
         // $this->user = new User();
         // $this->kemahasiswaan = new Kemahasiswaan();
         // $this->mahasiswa = new Mahasiswa();
