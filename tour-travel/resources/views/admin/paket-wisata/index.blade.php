@@ -36,7 +36,7 @@
                     <tr class="text-center">
                         <th>No</th>
                         <th>Nama Paket Wisata</th>
-                        <th>Kategori Paket</th>
+                        <!-- <th>Kategori Paket</th> -->
                         <th>Harga Paket</th>
                         <th>Foto Paket</th>
                         <th>Aksi</th>
@@ -48,9 +48,8 @@
                     @endphp
                     @foreach ($paket_wisata as $key => $item)
                         <tr class="text-center">
-                            <td>{{ $paket_isata->firstItem() + $key }}</td>
+                            <td>{{ $paket_wisata->firstItem() + $key }}</td>
                             <td>{{ $item->nama_paket }}</td>
-                            <!-- <td>{{ $item->kategori_paket}}</td> -->
                             <td>{{ $item->harga_paket }}</td>
                             <td><img src="{{ url('foto_paket/'.$item->foto_paket) }}" width="100px"></td>
                             <td>

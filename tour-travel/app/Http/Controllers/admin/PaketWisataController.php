@@ -76,17 +76,14 @@ class PaketWisataController extends Controller
                 'deskripsi_paket' => 'Wajib terisi',
                 'harga_paket' => 'Wajib terisi',
                 'foto_paket.required' => 'Mohon unggah gambar paket wisata.',
-                'foto_paket.max' => 'Ukuran maksimal 2 Mb.',
-                'foto_paket.mimes' => 'Unggah file dalam format JPEG, JPG, dan PNG.',
             ]
         );
 
         $file = Request()->foto_paket;
-        $fileName = Request()->foto_paket . '.' . $file->extension();
+        $fileName = Request()->nama_paket . '.' . $file->extension();
         $file -> move(public_path('foto_paket'), $fileName);
 
         $paket_wisata = PaketWisata::create([
-            // 'id_kategori_paket' => Request()->id_kategori_paket,
             'nama_paket' => Request()->nama_paket,
             'id_wisata_1' => Request()->id_wisata_1,
             'id_wisata_2' => Request()->id_wisata_2,
@@ -114,7 +111,6 @@ class PaketWisataController extends Controller
 
         $data = [
             'paket_wisata' => $this->paket_wisata->detailData($id),
-            // 'gambar_wisata' => Storage::url('public/' . $this->wisata->detailData($id)->gambar_wisata),
         ];
 
         return view('admin/paket-wisata/detail', $data);

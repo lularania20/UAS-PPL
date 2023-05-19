@@ -27,29 +27,49 @@
                             <th style="border: none">{{ $paket_wisata->id }}</th>
                         </tr>
                         <tr>
-                            <th width="150px" style="border: none">Nama Paket Wisata</th>
+                            <th width="300px" style="border: none">Nama Paket Wisata</th>
                             <th width="30px" style="border: none">:</th>
                             <th style="border: none">{{ $paket_wisata->nama_paket }}</th>
                         </tr>
                         <tr>
                             <th width="150px" style="border: none">List Wisata 1</th>
                             <th width="30px" style="border: none">:</th>
-                            <th style="border: none">{{ $paket_wisata->id_wisata_1 }}</th>
+                            <th style="border: none">{{ $paket_wisata->nama_wisata_1 }}</th>
+                        </tr>
+                        <tr>
+                            <th width="150px" style="border: none">Foto Wisata 1</th>
+                            <th width="30px" style="border: none">:</th>
+                            <th style="border: none"><img src="{{ url('foto_paket/'.$paket_wisata->foto_paket) }}" width="100px"></th>
                         </tr>
                         <tr>
                             <th width="150px" style="border: none">List Wisata 2</th>
                             <th width="30px" style="border: none">:</th>
-                            <th style="border: none">{{ $paket_wisata->id_wisata_2 }}</th>
+                            <th style="border: none">{{ $paket_wisata->nama_wisata_2 }}</th>
+                        </tr>
+                        <tr>
+                            <th width="150px" style="border: none">Foto Wisata 2</th>
+                            <th width="30px" style="border: none">:</th>
+                            <th style="border: none"><img src="{{ url('foto_paket/'.$paket_wisata->foto_paket) }}" width="100px"></th>
                         </tr>
                         <tr>
                             <th width="150px" style="border: none">List Wisata 3</th>
                             <th width="30px" style="border: none">:</th>
-                            <th style="border: none">{{ $paket_wisata->id_wisata_3 }}</th>
+                            <th style="border: none">{{ $paket_wisata->nama_wisata_3 }}</th>
+                        </tr>
+                        <tr>
+                            <th width="150px" style="border: none">Foto Wisata 3</th>
+                            <th width="30px" style="border: none">:</th>
+                            <th style="border: none"><img src="{{ url('foto_paket/'.$paket_wisata->foto_paket) }}" width="100px"></th>
                         </tr>
                         <tr>
                             <th width="150px" style="border: none">List Wisata 4</th>
                             <th width="30px" style="border: none">:</th>
-                            <th style="border: none">{{ $paket_wisata->id_wisata_4 }}</th>
+                            <th style="border: none">{{ $paket_wisata->nama_wisata_4 }}</th>
+                        </tr>
+                        <tr>
+                            <th width="150px" style="border: none">Foto Wisata 4</th>
+                            <th width="30px" style="border: none">:</th>
+                            <th style="border: none"><img src="{{ url('foto_paket/'.$paket_wisata->foto_paket) }}" width="100px"></th>
                         </tr>
                         <tr>
                             <th width="150px" style="border: none">Harga Paket Wisata</th>
@@ -62,7 +82,7 @@
                             <th style="border: none">{{ $paket_wisata->deskripsi_paket }}</th>
                         </tr>
                         <tr>
-                            <th width="150px" style="border: none">Gambar Paket</th>
+                            <th width="150px" style="border: none">Foto Paket</th>
                             <th width="30px" style="border: none">:</th>
                             <th style="border: none"><img src="{{ url('foto_paket/'.$paket_wisata->foto_paket) }}" width="100px"></th>
                         </tr>

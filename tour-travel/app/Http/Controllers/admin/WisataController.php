@@ -104,7 +104,6 @@ class WisataController extends Controller
 
         $data = [
             'wisata' => $this->wisata->detailData($id),
-            // 'gambar_wisata' => Storage::url('public/' . $this->wisata->detailData($id)->gambar_wisata),
         ];
 
         return view('admin/wisata/detail', $data);

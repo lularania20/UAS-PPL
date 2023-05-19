@@ -18,7 +18,7 @@
             <h3 class="card-title"><b>Tambah Paket Wisata</b></h3>
         </div>
         <div class="card-body">
-            <form action="/admin/wisata/save" method="post" enctype="multipart/form-data">
+            <form action="/admin/paket-wisata/save" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="row">
                     <div class="col-12">
@@ -54,10 +54,15 @@
                         <div class="form-group">
                             <label>Deskripsi Paket Wisata</label>
                             <textarea name="deskripsi_paket" class="form-control"></textarea>
+                            <div class="invalid-feedback">
+                                @error('deskripsi_paket')
+                                    {{ $message }}
+                                @enderror
+                            </div>
                         </div>
                         <div>
-                            <label>Gambar Wisata</label> <br>
-                            <input type="file" name="foto_paket" class="form-control @error(' foto_paket') is-invalid @enderror">
+                            <label>Foto Paket</label> <br>
+                            <input type="file" name="foto_paket" class="form-control @error('foto_paket') is-invalid @enderror">
                             <div class="invalid-feedback">
                                 @error('foto_paket')
                                     {{ $message }}
