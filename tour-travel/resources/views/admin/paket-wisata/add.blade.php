@@ -31,51 +31,17 @@
                                 @enderror
                             </div>
                         </div>
+                        @for ($i = 1; $i <= 4; $i++)
                         <div class="form-group">
-                            <label>Kategori Paket Wisata</label>
-                            <select class="form-control theSelect" name="id_kategori_paket">
-                                <option>Pilih Kategori Paket Wisata</option>
-                                 @foreach ($kategori_paket as $item)
-                                    <option value="{{ $item->id }}">{{ $item->kategori_paket}}</option>
+                            <label>List Wisata {{ $i }}</label>
+                            <select class="form-control theSelect" name="id_wisata_{{ $i }}">
+                                <option>Pilih List Wisata {{ $i }}</option>
+                                @foreach ($wisata as $item)
+                                <option value="{{ $item->id }}">{{ $item->nama_wisata }}</option>
                                 @endforeach
                             </select>
                         </div>
-                        <div class="form-group">
-                            <label>List Wisata 1</label>
-                            <select class="form-control theSelect" name="id_wisata_1">
-                                <option>Pilih List Wisata 1</option>
-                                 @foreach ($wisata as $item)
-                                    <option value="{{ $item->id }}">{{ $item->nama_wisata}}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label>List Wisata 2</label>
-                            <select class="form-control theSelect" name="id_wisata_2">
-                                <option>Pilih List Wisata 2</option>
-                                 @foreach ($wisata as $item)
-                                    <option value="{{ $item->id }}">{{ $item->nama_wisata}}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label>List Wisata 3</label>
-                            <select class="form-control theSelect" name="id_wisata_3">
-                                <option>Pilih List Wisata 3</option>
-                                 @foreach ($wisata as $item)
-                                    <option value="{{ $item->id }}">{{ $item->nama_wisata }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label>List Wisata 4</label>
-                            <select class="form-control theSelect" name="id_wisata_4">
-                                <option>Pilih List Wisata 4</option>
-                                 @foreach ($wisata as $item)
-                                    <option value="{{ $item->id }}">{{ $item->nama_wisata }}</option>
-                                @endforeach
-                            </select>
-                        </div>
+                        @endfor
                         <div class="form-group">
                         <label>Harga Paket Wisata</label>
                             <input name="harga_paket" class="form-control @error('harga_paket') is-invalid @enderror" value="{{ old('harga_paket') }}">

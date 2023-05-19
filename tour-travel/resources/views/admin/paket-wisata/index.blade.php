@@ -46,11 +46,11 @@
                     @php
                         $no = 1;
                     @endphp
-                    @foreach ($wisata as $key => $item)
+                    @foreach ($paket_wisata as $key => $item)
                         <tr class="text-center">
                             <td>{{ $paket_isata->firstItem() + $key }}</td>
                             <td>{{ $item->nama_paket }}</td>
-                            <td>{{ $item->kategori_paket}}</td>
+                            <!-- <td>{{ $item->kategori_paket}}</td> -->
                             <td>{{ $item->harga_paket }}</td>
                             <td><img src="{{ url('foto_paket/'.$item->foto_paket) }}" width="100px"></td>
                             <td>
@@ -65,27 +65,27 @@
                 </tbody>
             </table>
             <br>
-            @if (count($wisata) < 1)
+            @if (count($paket_wisata) < 1)
             <div class="float-left">
                 Showing
-                {{ $wisata->total() }}
+                {{ $paket_wisata->total() }}
                 entries
             </div>
             <div class="float-right">
-                {{ $wisata->links("pagination::bootstrap-4") }}
+                {{ $paket_wisata->links("pagination::bootstrap-4") }}
             </div>
             @else
             <div class="float-left">
                 Showing
-                {{ $wisata->firstItem() }}
+                {{ $paket_wisata->firstItem() }}
                 to 
-                {{ $wisata->lastItem() }}
+                {{ $paket_wisata->lastItem() }}
                 of
-                {{ $wisata->total() }}
+                {{ $paket_wisata->total() }}
                 entries
             </div>
             <div class="float-right">
-                {{ $wisata->links("pagination::bootstrap-4") }}
+                {{ $paket_wisata->links("pagination::bootstrap-4") }}
             </div>
             @endif
         </div>
@@ -97,7 +97,7 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h4 class="modal-title">Hapus Wisata "{{ $data->nama_paket }}"</h4>
+                        <h4 class="modal-title">Hapus Paket Wisata "{{ $data->nama_paket }}"</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>

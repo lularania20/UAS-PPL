@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\admin\DashboardController;
 use App\Http\Controllers\admin\KategoriWisataController;
+use App\Http\Controllers\admin\PaketWisataController;
 use App\Http\Controllers\admin\WisataController;
 
 /*
@@ -36,8 +37,16 @@ Route::group([
     Route::get('/wisata/edit/{id}', [WisataController::class, 'edit'])->name('admin.wisata.edit');
     Route::post('/wisata/update/{id}', [WisataController::class, 'update'])->name('admin.wisata.update');
     Route::get('/wisata/delete/{id}', [WisataController::class, 'destroy'])->name('admin.wisata.delete');
+
+    Route::get('/paket-wisata', [PaketWisataController::class, 'index'])->name('admin.paket-wisata');
+    Route::get('/paket-wisata/detail/{id}', [PaketWisataController::class, 'detail'])->name('admin.paket-wisata.detail');
+    Route::get('/paket-wisata/add', [PaketWisataController::class, 'add'])->name('admin.paket-wisata.add');
+    Route::post('/paket-wisata/save', [PaketWisataController::class, 'store'])->name('admin.paket-wisata.save');
+    Route::get('/paket-wisata/edit/{id}', [PaketWisataController::class, 'edit'])->name('admin.paket-wisata.edit');
+    Route::post('/paket-wisata/update/{id}', [PaketWisataController::class, 'update'])->name('admin.paket-wisata.update');
+    Route::get('/paket-wisata/delete/{id}', [PaketWisataController::class, 'destroy'])->name('admin.paket-wisata.delete');
 });
 
-Auth::routes();
+// Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

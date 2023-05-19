@@ -24,13 +24,19 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="/dashboard" class="nav-link">
+                    <a href="/admin/kategori-wisata" class="nav-link">
+                        <i class="fas fa-user nav-icon"></i>
+                        <p>Kategori Wisata</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/admin/wisata" class="nav-link">
                         <i class="fas fa-user nav-icon"></i>
                         <p>Wisata</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="/dashboard" class="nav-link">
+                    <a href="/admin/paket-wisata" class="nav-link">
                         <i class="fas fa-user nav-icon"></i>
                         <p>Paket Wisata</p>
                     </a>
