@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Administrator | Wisata')
+@section('title', 'Administrator | Paket Wisata')
 
 @section('header')
 <div class="col-sm-4">

@@ -138,4 +138,9 @@ class PaketWisata extends Model
     // {
     //     return $this->belongsTo(Status::class, 'id_status');
     // }
+
+    public function transaksi()
+    {
+        return $this->hasMany(Transaksi::class, 'id_transaksi');
+    }
 }

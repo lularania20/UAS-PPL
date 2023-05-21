@@ -18,8 +18,9 @@ class CreateTransaksi extends Migration
             $table->string('id_pelanggan')->nullable()->constrained('pelanggan');
             $table->string('id_paket')->nullable()->constrained('paket_wisata');
             $table->string('id_wisata')->nullable()->constrained('wisata');
-            $table->string('status')->nullable()->constrained('status');
-            $table->date('tanggal_keberangkatan');
+            $table->string('id_status')->nullable()->constrained('status');
+            $table->string('keterangan_pembayaran')->nullable();
+            $table->date('tanggal_keberangkatan')->nullable();
             $table->timestamps();
         });
     }
