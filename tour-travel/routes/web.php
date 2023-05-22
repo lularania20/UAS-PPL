@@ -54,6 +54,7 @@ Route::group([
     Route::get('/transaksi/edit/{id}', [TransaksiController::class, 'edit'])->name('admin.transaksi.edit');
     Route::post('/transaksi/update/{id}', [TransaksiController::class, 'update'])->name('admin.transaksi.update');
     Route::get('/transaksi/delete/{id}', [TransaksiController::class, 'destroy'])->name('admin.transaksi.delete');
+    Route::get('/transaksi/approve', [TransaksiController::class, 'updateStatus'])->name('admin.transaksi.approve');
 });
 
 // Auth::routes();

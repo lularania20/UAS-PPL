@@ -31,15 +31,20 @@ class TransaksiController extends Controller
             'danger', 'success'
         ];
 
-        $transaksi = Transaksi::with(['status', 'wisata', 'paket_wisata', 'pelanggan'])->paginate(20);
-        
+        if ($request->has('search')) {
+            $transaksi = Transaksi::with(['status', 'wisata', 'paket_wisata', 'pelanggan'])
+            ->whereRelation('pelanggan', 'nama', 'LIKE', '%' . $request->search . '%')
+            ->paginate(20);
+        } else {
+            $transaksi = Transaksi::with(['status', 'wisata', 'paket_wisata', 'pelanggan'])->paginate(20);
+        }
+
         $data = [
             'transaksi' => $transaksi,
             'colors' => $colors,
             'opsi_status' => Status::all(),
             'pelanggan' => $this->pelanggan->allData(),
         ];  
-        //dd(Transaksi::with(['status', 'wisata', 'paket_wisata', 'pelanggan'])->paginate(3));
 
         return view('admin.transaksi.index', $data);
     }
@@ -48,8 +53,8 @@ class TransaksiController extends Controller
     {
 
         $data = [
-            'wisata' => $this->wisata->allData(),
-            'paket_wisata' => $this->paket_wisata->allData(),
+            'paket_wisata' => PaketWisata::all(), 
+            'wisata' => Wisata::all(),
             'pelanggan' => $this->pelanggan->allData(),
             //'prodi' => DB::table('prodi')->get(),
             //'status' => Status::all()->whereNotIn('id', [1,2,4,5,6,7,8,9,10]),
@@ -85,20 +90,18 @@ class TransaksiController extends Controller
 
     public function detail($id)
     {
+        $transaksi = Transaksi::with(['status', 'wisata', 'paket_wisata', 'pelanggan'])->find($id);
 
-        if ((!$this->transaksi->detailData($id)) || ($this->transaksi->detailData($id)->id_status == 1)) {
-            abort(404);
+        if (!$transaksi) {
+            // Jika transaksi dengan ID yang diberikan tidak ditemukan, redirect atau tampilkan pesan error sesuai kebutuhan
+            return redirect()->back()->with('error', 'Transaksi tidak ditemukan');
         }
 
-        $transaksi = $this->transaksi->detailData($id);
-        // $profile = Pelanggan::where('id', $transaksi->id_pelanggan)->first();
-
         $data = [
-            'transaksi' => $this->transaksi->detailData($id),
-            // 'profile' => $profile,
+            'transaksi' => $transaksi,
         ];
 
-        return view('admin/transaksi/detail', $data);
+        return view('admin.transaksi.detail', $data);
     }
 
     public function edit($id)
@@ -204,36 +207,66 @@ class TransaksiController extends Controller
         return redirect('Pelanggan/transaksi-layanan');
     }
 
-    public function apply($id)
-    {
-        $data = [
-            'id_status' => 2,
-            'created_at' => Carbon::now(),
-        ];
+    // public function approve($id)
+    // {
+    //     $data = [
+    //         'id_status' => 2,
+    //         'created_at' => Carbon::now(),
+    //     ];
 
-        $transaksi = Transaksi::where('id', $id);
-        if ($transaksi->first()->id_status == 1) {
-            $update = $transaksi->update($data);
-        } else {
-            abort(404);
+    //     $transaksi = Transaksi::where('id', $id);
+    //     if ($transaksi->first()->id_status == 1) {
+    //         $update = $transaksi->update($data);
+    //     } else {
+    //         abort(404);
+    //     }
+
+    //     if ($update) {
+    //         Alert::success('Sukses!', 'Transaksi Telah Dibayarkan');
+    //     }
+
+    //     return redirect()->back();
+    // }
+
+    public function updateStatus(Request $request)
+    {
+        $transaksi = Transaksi::findOrFail($request->id_transaksi);
+
+        if ($transaksi->id_status != ((int)$request->id_status)) {
+            $transaksi->id_status = $request->id_status;
+        
+            if ($request->has('keterangan_pembayaran')) {
+                $request->validate([
+                    'keterangan_pembayaran' => 'required',
+                ], [
+                    'keterangan_pembayaran.required' => 'Mohon isi keterangan pembayaran.',
+                ]);
+        
+                $transaksi->keterangan_pembayaran = $request->keterangan_pembayaran;
+            } else {
+                $transaksi->keterangan_pembayaran = null;
+            }
+        
+            if ($request->has('tanggal_keberangkatan')) {
+                $request->validate([
+                    'tanggal_keberangkatan' => 'required|date',
+                ], [
+                    'tanggal_keberangkatan.required' => 'Mohon isi tanggal keberangkatan.',
+                    'tanggal_keberangkatan.date' => 'Format tanggal keberangkatan tidak valid.',
+                ]);
+        
+                $transaksi->tanggal_keberangkatan = $request->tanggal_keberangkatan;
+            } else {
+                $transaksi->tanggal_keberangkatan = null;
+            }
+        
+
+            if ($transaksi->save()) {
+                return response()->json([
+                    'success' => true,
+                    'message' => 'Status Transaksi Lunas!',
+                ]);
+            }    
         }
-
-        if ($update) {
-            Alert::success('Sukses!', 'transaksi Layanan Berhasil Diajukan!');
-        }
-
-        return redirect()->back();
-    }
-
-    public function viewFile($id)
-    {
-        $transaksi = $this->transaksi->detailData($id);
-        return response()->file(storage_path('app/public' . '/' . $transaksi->berkas));
-    }
-
-    public function generateFile($id)
-    {
-        $transaksi = $this->transaksi->detailData($id);
-        return response()->download(storage_path('app/public' . '/' . $transaksi->berkas));
     }
 } 

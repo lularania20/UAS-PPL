@@ -28,20 +28,21 @@ class Transaksi extends Model
     {
         return DB::table('transaksi')
             ->join('pelanggan', 'transaksi.id_pelanggan', '=', 'pelanggan.id')
-            // ->join('paket_wisata', 'transaksi.id_paket', '=', 'paket_wisata.id')
+            ->join('paket_wisata', 'transaksi.id_paket', '=', 'paket_wisata.id')
             ->join('wisata', 'transaksi.id_wisata', '=', 'wisata.id')
-            // ->join('status', 'transaksi.id_status', '=', 'status.id')
+            ->join('status', 'transaksi.id_status', '=', 'status.id')
             ->select(
                 'transaksi.*',
                 'pelanggan.nama',
                 'pelanggan.email',
                 'pelanggan.telepon',
                 'pelanggan.alamat',
-                // 'paket_wisata.nama_paket',
-                // 'paket_wisata.harga_paket',
+                'paket_wisata.nama_paket',
+                'paket_wisata.harga_paket',
                 'wisata.nama_wisata',
                 'wisata.harga_wisata',
-                // 'status.status'
+                'status.status',
+                'transaksi.id as id_transaksi'
             );
     }
 
@@ -54,7 +55,7 @@ class Transaksi extends Model
             ->join('status', 'transaksi.id_status', '=', 'status.id')
             ->select(
                 'transaksi.*',
-                'pelanggan.id_user',
+                // 'pelanggan.id_user',
                 'pelanggan.nama',
                 'pelanggan.email',
                 'pelanggan.telepon',
@@ -64,6 +65,7 @@ class Transaksi extends Model
                 'wisata.nama_wisata',
                 'wisata.harga_wisata',
                 'status.status',
+                'transaksi.id as id_transaksi'
             )->where('transaksi.id', $id)->first();
     }
 

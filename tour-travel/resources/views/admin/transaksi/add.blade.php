@@ -5,7 +5,7 @@
 @section('header')
     <div class="col-sm-12">
         <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="{{ route('admin') }}">Home</a></li>
+            <li class="breadcrumb-item"><a href="/admin">Home</a></li>
             <li class="breadcrumb-item"><a href="{{ route('admin.transaksi') }}">Data Transaksi</a></li>
             <li class="breadcrumb-item active">Add</li>
         </ol>
@@ -18,7 +18,7 @@
             <h3 class="card-title"><b>Tambah Transaksi</b></h3>
         </div>
         <div class="card-body">
-            <form action="{{ route('admin.permohonan-layanan.store') }}" method="post" enctype="multipart/form-data">
+            <form action="{{ route('admin.transaksi.save') }}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="row">
                     <div class="col-12">

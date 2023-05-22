@@ -3,7 +3,19 @@
 @section('title', 'Administrator | Transaksi')
 
 @section('header')
-    <div class="col-sm-12">
+<div class="col-sm-4">
+    <form action="/admin/transaksi" method="get">
+        <div class="input-group">
+            <input type="search" name="search" class="form-control" placeholder="Nama Pelanggan">
+            <div class="input-group-append">
+                <button type="submit" class="btn btn-dark">
+                    <i class="fas fa-search fa-fw"></i>
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+    <div class="col-sm-8">
         <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="/admin">Home</a></li>
             <li class="breadcrumb-item active">Transaksi</li>
@@ -24,9 +36,10 @@
                     <tr class="text-center">
                         <th>No</th>
                         <th>Nama Pelanggan</th>
-                        <!-- <th>Kategori Paket</th> -->
-                        <!-- <th>Harga Paket</th>
-                        <th>Foto Paket</th> -->
+                        <th>Nama Paket</th>
+                        <th>Harga Paket</th>
+                        <th>Status</th>
+                        <th>Tanggal Pemesanan</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
@@ -38,6 +51,10 @@
                         <tr class="text-center">
                             <td>{{ $transaksi->firstItem() + $key }}</td>
                             <td>{{ $item->pelanggan->nama }}</td>
+                            <td>{{ $item->paket_wisata->nama_paket }}</td>
+                            <td>{{ $item->paket_wisata->harga_paket }}</td>
+                            <td><span class="badge badge-{{ $colors[($item->id_status - 1) % count($colors)] }}">{{ $item->status->status }}</span></td>
+                            <td>{{ Carbon\Carbon::parse($item->created_at)->format('d-m-Y H:i:s') }}</td>
                             <td>
                                 <a href="/admin/transaksi/detail/{{ $item->id }}"> <button type="button" class="btn btn-sm btn-primary">Detail</button></a>
                                 <a href="/admin/transaksi/edit/{{ $item->id }}"> <button type="button" class="btn btn-sm btn-warning">Edit</button></a>
