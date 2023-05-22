@@ -6,17 +6,7 @@ use App\Http\Controllers\admin\KategoriWisataController;
 use App\Http\Controllers\admin\PaketWisataController;
 use App\Http\Controllers\admin\WisataController;
 use App\Http\Controllers\admin\TransaksiController;
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+use App\Http\Controllers\customer\CustomerController;
 
 Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 
@@ -60,3 +50,16 @@ Route::group([
 // Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::group([
+    'prefix'=>'/customer',
+], function(){
+    Route::get('/home', [CustomerController::class,'index'])->name('customer.index');
+    Route::get('/package', [CustomerController::class,'package'])->name('customer.package');
+    Route::get('/destination', [CustomerController::class,'destination'])->name('customer.destination');
+    Route::get('/package-detail', [CustomerController::class,'packageDetail'])->name('customer.packageDetail');
+    Route::get('/destination-detail', [CustomerController::class,'destinationDetail'])->name('customer.destinationDetail');
+    Route::get('/checkout', [CustomerController::class,'checkout'])->name('customer.checkout');
+    Route::get('/login', [CustomerController::class,'login'])->name('customer.login');
+    Route::get('/register', [CustomerController::class,'register'])->name('customer.register');
+});
