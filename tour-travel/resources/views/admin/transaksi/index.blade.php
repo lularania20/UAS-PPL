@@ -57,10 +57,6 @@
                             <td>{{ Carbon\Carbon::parse($item->created_at)->format('d-m-Y H:i:s') }}</td>
                             <td>
                                 <a href="/admin/transaksi/detail/{{ $item->id }}"> <button type="button" class="btn btn-sm btn-primary">Detail</button></a>
-                                <a href="/admin/transaksi/edit/{{ $item->id }}"> <button type="button" class="btn btn-sm btn-warning">Edit</button></a>
-                                <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#delete{{ $item->id }}">
-                                    Delete
-                                </button>
                             </td>
                         </tr>
                     @endforeach

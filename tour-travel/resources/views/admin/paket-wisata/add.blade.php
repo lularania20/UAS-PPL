@@ -80,3 +80,9 @@
         <!-- /.card-body -->
     </div>
 @endsection
+
+@section('scripts')
+<script>
+    $(".theSelect").select2();
+</script>
+@endsection

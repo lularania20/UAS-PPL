@@ -31,7 +31,7 @@ Route::group([
     Route::post('/kategori-wisata/update/{id}', [KategoriWisataController::class, 'update'])->name('admin.kategori-wisata.update');
     Route::get('/kategori-wisata/delete/{id}', [KategoriWisataController::class, 'destroy'])->name('admin.kategori-wisata.delete');
 
-    Route::get('/wisata', [WisataController::class, 'index'])->name('admin.wisata');
+    Route::get('/wisata', [WisataController::class, 'index'])->name('admin.wisata.index');
     Route::get('/wisata/detail/{id}', [WisataController::class, 'detail'])->name('admin.wisata.detail');
     Route::get('/wisata/add', [WisataController::class, 'add'])->name('admin.wisata.add');
     Route::post('/wisata/save', [WisataController::class, 'store'])->name('admin.wisata.save');

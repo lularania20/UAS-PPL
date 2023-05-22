@@ -55,7 +55,7 @@
                         <tr>
                             <th width="200px" style="border: none">Tanggal Keberangkatan</th>
                             <th width="30px" style="border: none">:</th>
-                            <th style="border: none">{{ $transaksi->tanggal_keberangkatan }}</th>
+                            <th style="border: none">{{ Carbon\Carbon::parse($transaksi->tanggal_keberangkatan)->format('d-m-Y H:i:s') }}</th>
                         </tr>
                         @endif
                     </table>

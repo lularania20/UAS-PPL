@@ -5,6 +5,7 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use App\Models\KategoriWisata;
 use App\Models\Wisata;
+use App\Models\PaketWisata;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -184,24 +185,45 @@ class WisataController extends Controller
 
     public function destroy($id)
     {
-        if ((!Wisata::where('id', $id)->first())) {
+        $wisata = Wisata::find($id);
+
+        if (!$wisata) {
             abort(404);
         }
 
-        $filename = Wisata::where('id', $id)->first()->gambar_wisata;
+        // Check if the Wisata is associated with any PaketWisata
+        $paket_wisata = PaketWisata::where('id_wisata_1', $wisata->id)
+            ->orWhere('id_wisata_2', $wisata->id)
+            ->orWhere('id_wisata_3', $wisata->id)
+            ->orWhere('id_wisata_4', $wisata->id)
+            ->get();
 
-        if ($filename) {
-            $file = storage_path('app/public' . '/' . $filename);
-            unlink($file);
+        if ($paket_wisata->count() > 0) {
+            // Update the related PaketWisata records to remove the association with this Wisata
+            $paket_wisata->each(function ($paket) use ($wisata) {
+                if ($paket->id_wisata_1 == $wisata->id) {
+                    $paket->id_wisata_1 = null;
+                }
+                if ($paket->id_wisata_2 == $wisata->id) {
+                    $paket->id_wisata_2 = null;
+                }
+                if ($paket->id_wisata_3 == $wisata->id) {
+                    $paket->id_wisata_3 = null;
+                }
+                if ($paket->id_wisata_4 == $wisata->id) {
+                    $paket->id_wisata_4 = null;
+                }
+                $paket->save();
+            });
         }
 
-        $wisata = $this->wisata->deleteData($id);
+        // Delete the Wisata
+        $wisata->delete();
 
-        if ($wisata) {
-            Alert::success('Sukses!', 'Data Berhasil Dihapus!');
-        }
-        return redirect('admin/wisata');
+        return redirect()->route('admin.wisata.index')->with('success', 'Wisata deleted successfully');
     }
+
+
 
     // public function apply($id)
     // {

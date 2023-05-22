@@ -18,12 +18,12 @@
             <h3 class="card-title"><b>Edit Paket Wisata</b></h3>
         </div>
         <div class="card-body">
-            <form action="{{ route('admin.paket-wisata.update', $paket_wisata->id) }}" method="post">
+            <form action="{{ route('admin.paket-wisata.update', $paket_wisata->id) }}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="row">
                     <div class="col-12">
                         <div class="form-group">
-                        <label>Nama Paket Wisata</label>
+                            <label>Nama Paket Wisata</label>
                             <input name="nama_paket" class="form-control @error('nama_paket') is-invalid @enderror" value="{{ $paket_wisata->nama_paket }}">
                             <div class="invalid-feedback">
                                 @error('nama_paket')
@@ -31,44 +31,19 @@
                                 @enderror
                             </div>
                         </div>
+                        @for ($i = 1; $i <= 4; $i++)
+                            <div class="form-group">
+                                <label>List Wisata {{ $i }}</label>
+                                <select class="form-control theSelect" name="id_wisata_{{ $i }}">
+                                    <option>Pilih List Wisata {{ $i }}</option>
+                                    @foreach ($wisata as $item)
+                                        <option value="{{ $item->id }}" {{ $paket_wisata->{'id_wisata_'.$i} == $item->id ? 'selected' : '' }}>{{ $item->nama_wisata }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        @endfor
                         <div class="form-group">
-                            <label>List Wisata 1</label>
-                            <select class="form-control theSelect" name="id_wisata_1">
-                                <option>Pilih List Wisata 1</option>
-                                 @foreach ($wisata as $item)
-                                    <option value="{{ $item->id }}">{{ $item->nama_wisata}}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label>List Wisata 2</label>
-                            <select class="form-control theSelect" name="id_wisata_2">
-                                <option>Pilih List Wisata 2</option>
-                                 @foreach ($wisata as $item)
-                                    <option value="{{ $item->id }}">{{ $item->nama_wisata}}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label>List Wisata 3</label>
-                            <select class="form-control theSelect" name="id_wisata_3">
-                                <option>Pilih List Wisata 3</option>
-                                 @foreach ($wisata as $item)
-                                    <option value="{{ $item->id }}">{{ $item->nama_wisata}}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label>List Wisata 4</label>
-                            <select class="form-control theSelect" name="id_wisata_4">
-                                <option>Pilih List Wisata 4</option>
-                                 @foreach ($wisata as $item)
-                                    <option value="{{ $item->id }}">{{ $item->nama_wisata}}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <div class="form-group">
-                        <label>Harga Paket Wisata</label>
+                            <label>Harga Paket Wisata</label>
                             <input name="harga_paket" class="form-control @error('harga_paket') is-invalid @enderror" value="{{ $paket_wisata->harga_paket }}">
                             <div class="invalid-feedback">
                                 @error('harga_paket')
@@ -77,23 +52,19 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label>Deskripsi Wisata</label>
-                            <textarea name="editor1"  class="form-control">{{ $wisata->deskripsi_wisata }}</textarea>
-                        </div>
-                        <div class="form-group">
-                        <label>Harga Paket Wisata</label>
-                            <input name="harga_wisata" class="form-control @error('harga_wisata') is-invalid @enderror" value="{{ $paket_wisata->harga_wisata }}">
+                            <label>Deskripsi Paket Wisata</label>
+                            <textarea name="deskripsi_paket" class="form-control">{{ $paket_wisata->deskripsi_paket }}</textarea>
                             <div class="invalid-feedback">
-                                @error('harga_wisata')
+                                @error('deskripsi_paket')
                                     {{ $message }}
                                 @enderror
                             </div>
                         </div>
                         <div>
-                            <label>Gambar Wisata</label> <br>
+                            <label>Foto Paket</label> <br>
                             <input type="file" name="foto_paket" class="form-control @error('foto_paket') is-invalid @enderror">
                             <div class="invalid-feedback">
-                                @error('gambar_wisata')
+                                @error('foto_paket')
                                     {{ $message }}
                                 @enderror
                             </div>
@@ -108,4 +79,10 @@
         </div>
         <!-- /.card-body -->
     </div>
+@endsection
+
+@section('scripts')
+<script>
+    $(".theSelect").select2();
+</script>
 @endsection
