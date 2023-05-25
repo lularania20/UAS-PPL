@@ -17,9 +17,6 @@
                     <li class="nav-item mx-5">
                         <a class="nav-link active" aria-current="page" href="/customer/package">Paket Wisata</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/customer/login">Masuk</a>
-                    </li>
                 </ul>
             </div>
         </div>
