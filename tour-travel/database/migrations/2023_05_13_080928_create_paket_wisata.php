@@ -20,7 +20,6 @@ class CreatePaketWisata extends Migration
             $table->string('id_wisata_1')->nullable()->constrained('wisata');
             $table->string('id_wisata_2')->nullable()->constrained('wisata');
             $table->string('id_wisata_3')->nullable()->constrained('wisata');
-            $table->string('id_wisata_4')->nullable()->constrained('wisata');
             $table->string('harga_paket');
             $table->string('deskripsi_paket');
             $table->string('foto_paket');

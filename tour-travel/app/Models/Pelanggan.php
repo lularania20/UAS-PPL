@@ -18,7 +18,7 @@ class Pelanggan extends Model
         // 'id_role',
         'nama',
         'email',
-        'password',
+        // 'password',
         'telepon',
         'alamat',
     ];
@@ -53,7 +53,14 @@ class Pelanggan extends Model
 
     public function allData()
     {
-        return DB::table('pelanggan')->get();
+        return DB::table('pelanggan');
+    }
+
+    public function updateData($id, $data)
+    {
+        return DB::table('pelanggan')
+            ->where('id', $id)
+            ->update($data);
     }
 
     // public function countMahasiswa()
@@ -71,6 +78,12 @@ class Pelanggan extends Model
     // {
     //     return $this->belongsTo(PermohonanLayanan::class, 'id_mahasiswa');
     // }
+    public function deleteData($id)
+    {
+        return DB::table('pelanggan')
+            ->where('id', $id)
+            ->delete();
+    }
 
     public function transaksi()
     {

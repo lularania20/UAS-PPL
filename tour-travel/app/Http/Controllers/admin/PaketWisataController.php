@@ -3,12 +3,10 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
-// use App\Models\KategoriPaket;
 use App\Models\Wisata;
 use App\Models\PaketWisata;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
-// use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -25,7 +23,6 @@ class PaketWisataController extends Controller
     public function index(Request $request)
     {
 
-
         if ($request->has('search')) {
             $paket_wisata = $this->paket_wisata
                 ->allData()
@@ -40,6 +37,7 @@ class PaketWisataController extends Controller
         $data = [
             'paket_wisata' =>$paket_wisata,
         ];
+
 
         return view('/admin/paket-wisata/index', $data);
     }
@@ -59,7 +57,6 @@ class PaketWisataController extends Controller
                 'id_wisata_1' => 'required',
                 'id_wisata_2' => 'required',
                 'id_wisata_3' => 'required',
-                'id_wisata_4' => 'required',
                 'deskripsi_paket' => 'required',
                 'harga_paket' => 'required',
                 'foto_paket' => 'required',
@@ -69,7 +66,6 @@ class PaketWisataController extends Controller
                 'id_wisata_1' => 'Wajib terisi',
                 'id_wisata_2' => 'Wajib terisi',
                 'id_wisata_3' => 'Wajib terisi',
-                'id_wisata_4' => 'Wajib terisi',
                 'deskripsi_paket' => 'Wajib terisi',
                 'harga_paket' => 'Wajib terisi',
                 'foto_paket.required' => 'Mohon unggah gambar paket wisata.',
@@ -85,7 +81,6 @@ class PaketWisataController extends Controller
             'id_wisata_1' => Request()->id_wisata_1,
             'id_wisata_2' => Request()->id_wisata_2,
             'id_wisata_3' => Request()->id_wisata_3,
-            'id_wisata_4' => Request()->id_wisata_4,
             'deskripsi_paket' => Request()->deskripsi_paket,
             'harga_paket' => Request()->harga_paket,
             'foto_paket' => $fileName,
@@ -139,7 +134,6 @@ class PaketWisataController extends Controller
                 'id_wisata_1' => 'required',
                 'id_wisata_2' => 'required',
                 'id_wisata_3' => 'required',
-                'id_wisata_4' => 'required',
                 'deskripsi_paket' => 'required',
                 'harga_paket' => 'required',
                 'foto_paket' => 'required',
@@ -149,7 +143,6 @@ class PaketWisataController extends Controller
                 'id_wisata_1.required' => 'Wajib terisi',
                 'id_wisata_2.required' => 'Wajib terisi',
                 'id_wisata_3.required' => 'Wajib terisi',
-                'id_wisata_4.required' => 'Wajib terisi',
                 'deskripsi_paket.required' => 'Wajib terisi',
                 'harga_paket.required' => 'Wajib terisi',
                 'foto_paket.required' => 'Mohon unggah gambar paket wisata.',
@@ -162,7 +155,6 @@ class PaketWisataController extends Controller
         $paket_wisata->id_wisata_1 = $request->id_wisata_1;
         $paket_wisata->id_wisata_2 = $request->id_wisata_2;
         $paket_wisata->id_wisata_3 = $request->id_wisata_3;
-        $paket_wisata->id_wisata_4 = $request->id_wisata_4;
         $paket_wisata->deskripsi_paket = $request->deskripsi_paket;
         $paket_wisata->harga_paket = $request->harga_paket;
 

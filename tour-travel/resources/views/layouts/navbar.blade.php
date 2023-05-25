@@ -69,7 +69,7 @@
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="display: inline-flex;">
                 <img src="{{ asset('assets') }}/adminlte/dist/img/AdminLTELogo.png" style="opacity: .8; width: 25px;">
-                <!-- {{-- <p style="margin-top: auto; margin-left: 5px;">{{ Auth::user()->nama }}</p> --}} -->
+                {{-- <p style="margin-top: auto; margin-left: 5px;">{{ Auth::user()->nama }}</p> --}}
             </a>
         </li>
     </ul>

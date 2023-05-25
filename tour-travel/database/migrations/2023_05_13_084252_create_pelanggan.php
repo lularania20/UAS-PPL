@@ -17,7 +17,7 @@ class CreatePelanggan extends Migration
             $table->id();
             $table->string('nama');
             $table->string('email')->unique();
-            $table->string('password');
+            // $table->string('password');
             $table->string('telepon');
             $table->string('alamat');
             $table->timestamps();

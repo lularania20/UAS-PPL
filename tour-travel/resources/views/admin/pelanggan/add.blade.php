@@ -1,13 +1,13 @@
 @extends('layouts.app')
 
-@section('title', 'Kemahasiswaan | Add User Kemahasiswaan')
+@section('title', 'Administrator | Tambah Pelanggan')
 
 @section('header')
     <div class="col-sm-12">
         <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="/kemahasiswaan">Home</a></li>
-            <li class="breadcrumb-item"><a href="/kemahasiswaan/user/kemahasiswaan">User Kemahasiswaan</a></li>
-            <li class="breadcrumb-item active">Add</li>
+            <li class="breadcrumb-item"><a href="/admin">Home</a></li>
+            <li class="breadcrumb-item"><a href="/admin/pelanggan">Pelanggan</a></li>
+            <li class="breadcrumb-item active">Tambah</li>
         </ol>
     </div>
 @endsection
@@ -15,47 +15,18 @@
 @section('content')
     <div class="card">
         <div class="card-header">
-            <h3 class="card-title"><b>Tambah User Kemahasiswaan</b></h3>
+            <h3 class="card-title"><b>Tambah Pelanggan</b></h3>
         </div>
         <div class="card-body">
-            <form action="{{ route('kemahasiswaan.user.kemahasiswaan.save') }}" method="post">
+            <form action="{{ route('admin.pelanggan.save') }}" method="post">
                 @csrf
                 <div class="row">
                     <div class="col-12">
-                        <div class="form-group">
-                            <label>NIP</label>
-                            <input name="nip" class="form-control @error('nip') is-invalid @enderror" value="{{ old('nip') }}">
-                            <div class="invalid-feedback">
-                                @error('nip')
-                                    {{ $message }}
-                                @enderror
-                            </div>
-                        </div>
                         <div class="form-group">
                             <label>Nama</label>
                             <input name="nama" class="form-control @error('nama') is-invalid @enderror" value="{{ old('nama') }}">
                             <div class="invalid-feedback">
                                 @error('nama')
-                                    {{ $message }}
-                                @enderror
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label>Jabatan</label>
-                            <input name="jabatan" class="form-control @error('jabatan') is-invalid @enderror" value="{{ old('jabatan') }}">
-                            <div class="invalid-feedback">
-                                @error('jabatan')
-                                    {{ $message }}
-                                @enderror
-                            </div>
-                        </div>
-                        <input type="hidden" name="id_role" value="{{ $roles->id }}" />
-                        <input type="hidden" name="role" value="{{ $roles->name }}" />
-                        <div class="form-group">
-                            <label>Role</label>
-                            <input name="kemahasiswaan" class="form-control @error('kemahasiswaan') is-invalid @enderror" value="Kemahasiswaan" readonly>
-                            <div class="invalid-feedback">
-                                @error('kemahasiswaan')
                                     {{ $message }}
                                 @enderror
                             </div>
@@ -70,16 +41,25 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label>Password</label>
-                            <input type="password" name="password" class="form-control @error('password') is-invalid @enderror" value="{{ old('password') }}">
+                            <label>Telepon</label>
+                            <input name="telepon" class="form-control @error('telepon') is-invalid @enderror" value="{{ old('telepon') }}">
                             <div class="invalid-feedback">
-                                @error('password')
+                                @error('telepon')
+                                    {{ $message }}
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Alamat</label>
+                            <input name="alamat" class="form-control @error('alamat') is-invalid @enderror" value="{{ old('alamat') }}">
+                            <div class="invalid-feedback">
+                                @error('alamat')
                                     {{ $message }}
                                 @enderror
                             </div>
                         </div>
                         <div class="form-group mt-4">
-                            <a href="{{ route('kemahasiswaan.user.kemahasiswaan') }}" class="btn btn-dark btn-sm">Kembali</a>
+                            <a href="{{ route('admin.pelanggan') }}" class="btn btn-dark btn-sm">Kembali</a>
                             <button type="submit" class="btn btn-dark btn-sm">Simpan</button>
                         </div>
                     </div>
