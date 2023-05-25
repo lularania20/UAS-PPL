@@ -33,7 +33,6 @@ class PaketWisata extends Model
         ->join('wisata as w1', 'paket_wisata.id_wisata_1', '=', 'w1.id')
         ->join('wisata as w2', 'paket_wisata.id_wisata_2', '=', 'w2.id')
         ->join('wisata as w3', 'paket_wisata.id_wisata_3', '=', 'w3.id')
-        ->join('wisata as w4', 'paket_wisata.id_wisata_4', '=', 'w4.id')
         ->select(
             'paket_wisata.*',
             'w1.nama_wisata as nama_wisata_1',
@@ -42,8 +41,6 @@ class PaketWisata extends Model
             'w2.gambar_wisata as gambar_wisata_2',
             'w3.nama_wisata as nama_wisata_3',
             'w3.gambar_wisata as gambar_wisata_3',
-            'w4.nama_wisata as nama_wisata_4',
-            'w4.gambar_wisata as gambar_wisata_4',
         );
     }
 
@@ -53,7 +50,6 @@ class PaketWisata extends Model
         ->join('wisata as w1', 'paket_wisata.id_wisata_1', '=', 'w1.id')
         ->join('wisata as w2', 'paket_wisata.id_wisata_2', '=', 'w2.id')
         ->join('wisata as w3', 'paket_wisata.id_wisata_3', '=', 'w3.id')
-        ->join('wisata as w4', 'paket_wisata.id_wisata_4', '=', 'w4.id')
         ->select(
             'paket_wisata.*',
             'w1.nama_wisata as nama_wisata_1',
@@ -61,9 +57,7 @@ class PaketWisata extends Model
             'w2.nama_wisata as nama_wisata_2',
             'w2.gambar_wisata as gambar_wisata_2',
             'w3.nama_wisata as nama_wisata_3',
-            'w3.gambar_wisata as gambar_wisata_3',
-            'w4.nama_wisata as nama_wisata_4',
-            'w4.gambar_wisata as gambar_wisata_4')->where('paket_wisata.id', $id)->first();
+            'w3.gambar_wisata as gambar_wisata_3',)->where('paket_wisata.id', $id)->first();
     }
 
     public function addData($data)

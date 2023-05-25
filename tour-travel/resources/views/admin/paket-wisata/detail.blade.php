@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title', 'Administrator | Detail Paket Wisata')
-
+ 
 @section('header')
     <div class="col-sm-12">
         <ol class="breadcrumb float-sm-right">
