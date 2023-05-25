@@ -56,8 +56,6 @@ class TransaksiController extends Controller
             'paket_wisata' => PaketWisata::all(), 
             'wisata' => Wisata::all(),
             'pelanggan' => $this->pelanggan->allData(),
-            //'prodi' => DB::table('prodi')->get(),
-            //'status' => Status::all()->whereNotIn('id', [1,2,4,5,6,7,8,9,10]),
         ];
 
         return view('/admin/transaksi/add', $data);
