@@ -8,11 +8,12 @@ use App\Http\Controllers\admin\WisataController;
 use App\Http\Controllers\admin\TransaksiController;
 use App\Http\Controllers\customer\CustomerController;
 
-Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+Route::get('/', [CustomerController::class, 'index'])->name('customer.index');
 
 Route::group([
     'prefix' => '/admin',
 ], function () {
+    Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('/kategori-wisata', [KategoriWisataController::class, 'index'])->name('admin.kategori-wisata');
     Route::get('/kategori-wisata/detail/{id}', [KategoriWisataController::class, 'show'])->name('admin.kategori-wisata.detail');
     Route::get('/kategori-wisata/add', [KategoriWisataController::class, 'add'])->name('admin.kategori-wisata.add');
@@ -52,14 +53,14 @@ Route::group([
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::group([
-    'prefix'=>'/customer',
-], function(){
-    Route::get('/home', [CustomerController::class,'index'])->name('customer.index');
-    Route::get('/package', [CustomerController::class,'package'])->name('customer.package');
-    Route::get('/destination', [CustomerController::class,'destination'])->name('customer.destination');
-    Route::get('/package-detail', [CustomerController::class,'packageDetail'])->name('customer.packageDetail');
-    Route::get('/destination-detail', [CustomerController::class,'destinationDetail'])->name('customer.destinationDetail');
-    Route::get('/checkout', [CustomerController::class,'checkout'])->name('customer.checkout');
-    Route::get('/login', [CustomerController::class,'login'])->name('customer.login');
-    Route::get('/register', [CustomerController::class,'register'])->name('customer.register');
+    'prefix' => '/customer',
+], function () {
+    Route::get('/home', [CustomerController::class, 'index'])->name('customer.index');
+    Route::get('/package', [CustomerController::class, 'package'])->name('customer.package');
+    Route::get('/destination', [CustomerController::class, 'destination'])->name('customer.destination');
+    Route::get('/package-detail', [CustomerController::class, 'packageDetail'])->name('customer.packageDetail');
+    Route::get('/destination-detail', [CustomerController::class, 'destinationDetail'])->name('customer.destinationDetail');
+    Route::get('/checkout', [CustomerController::class, 'checkout'])->name('customer.checkout');
+    Route::get('/login', [CustomerController::class, 'login'])->name('customer.login');
+    Route::get('/register', [CustomerController::class, 'register'])->name('customer.register');
 });

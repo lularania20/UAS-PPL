@@ -17,7 +17,7 @@ class CreateWisata extends Migration
             $table->id();
             $table->string('nama_wisata');
             $table->string('id_kategori_wisata')->nullable()->constrained('kategori_wisata');
-            $table->string('deskripsi_wisata');
+            $table->string('deskripsi_wisata', 1000);
             $table->string('harga_wisata');
             $table->string('gambar_wisata');
             $table->string('alamat_wisata');

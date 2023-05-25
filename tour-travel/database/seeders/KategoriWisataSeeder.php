@@ -17,15 +17,18 @@ class KategoriWisataSeeder extends Seeder
     {
         $kategori_wisata = [
             [
+                'id' => 1,
                 'kategori_wisata' => "Gunung",
                 'created_at' => Carbon::now(),
             ],
             [
-                'kategori_wisata' => "Sungai",
+                'id' => 2,
+                'kategori_wisata' => "Pantai",
                 'created_at' => Carbon::now(),
             ],
             [
-                'kategori_wisata' => "Lembah",
+                'id' => 3,
+                'kategori_wisata' => "Air Terjun",
                 'created_at' => Carbon::now(),
             ],
         ];
