@@ -9,7 +9,7 @@
     <meta name="description" content="Start your development with a Dashboard for Bootstrap 4.">
     <meta name="author" content="Creative Tim">
     <title>@yield('title')</title>
-    <link rel="icon" href="{{ asset('assets/img/pens.png') }}" type="image/png">
+    <link rel="icon" href="{{ asset('assets/logo.png') }}" type="image/png">
     <!-- Extra details for Live View on GitHub Pages -->
     <!-- Canonical SEO -->
     <link rel="canonical" href="https://www.creative-tim.com/product/argon-dashboard-pro" />
