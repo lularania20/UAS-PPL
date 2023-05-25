@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
             PelangganSeeder::class,
             WisataSeeder::class,
             PaketWisataSeeder::class,
+            UserSeeder::class,
         ]);
     }
 }
