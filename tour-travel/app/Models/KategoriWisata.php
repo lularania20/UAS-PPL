@@ -15,11 +15,6 @@ class KategoriWisata extends Model
 
     public function allData()
     {
-        return DB::table('kategori_wisata')->get();
-    }
-
-    public function allData2()
-    {
         return DB::table('kategori_wisata');
     }
 
@@ -49,14 +44,8 @@ class KategoriWisata extends Model
             ->delete();
     }
 
-    // public function countkategori_wisata()
-    // {
-    //     $data = DB::table('kategori_wisata')->count();
-    //     return $data;
-    // }
-
-    // public function permohonan()
-    // {
-    //     return $this->hasMany(PermohonanLayanan::class, 'kategori_wisata');
-    // }
+    public function wisata()
+    {
+        return $this->hasMany(Wisata::class, 'kategori_wisata');
+    }
 }

@@ -19,12 +19,12 @@ class KategoriWisataController extends Controller
     {
         if ($request->has('search')) {
             $kategori_wisata = $this->kategori_wisata
-                ->allData2()
+                ->allData()
                 ->where('kategori_wisata', 'LIKE', '%' . $request->search . '%')
                 ->paginate(10);
         } else {
             $kategori_wisata = $this->kategori_wisata
-                ->allData2()
+                ->allData()
                 ->paginate(10);
         }
 

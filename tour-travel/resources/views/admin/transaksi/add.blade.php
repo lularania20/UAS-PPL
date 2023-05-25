@@ -40,15 +40,6 @@
                                 @endforeach
                             </select>
                         </div>
-                        <div class="form-group">
-                            <label>Wisata</label>
-                            <select class="form-control theSelect" name="id_wisata">
-                                <option>Pilih Wisata</option>
-                                @foreach ($wisata as $item)
-                                    <option value="{{ $item->id }}">{{ $item->nama_wisata }}</option>
-                                @endforeach
-                            </select>
-                        </div>
                         <input type="hidden" name="id_status" value="{{ 1 }}" />
                         <div class="form-group mt-4">
                             <a href="{{ route('admin.transaksi') }}" class="btn btn-dark btn-sm">Kembali</a>

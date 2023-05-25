@@ -63,11 +63,11 @@ class Pelanggan extends Model
             ->update($data);
     }
 
-    // public function countMahasiswa()
-    // {
-    //     $data = DB::table('pelanggan')->count();
-    //     return $data;
-    // }
+    public function countPelanggan()
+    {
+        $data = DB::table('pelanggan')->count();
+        return $data;
+    }
 
     // public function user()
     // {

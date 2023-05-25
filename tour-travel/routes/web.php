@@ -18,9 +18,9 @@ Route::group([
 
     Route::get('/', [DashboardController::class, 'index'])->name('admin.dashboard');
 
-    Route::get('/login', [LoginController::class, 'index'])->name('admin.login');
-    Route::post('/login/action', [LoginController::class, 'action'])->name('admin.login.action');
-    Route::get('/logout', [LoginController::class, 'logout'])->name('admin.logout');
+    Route::get('/login', [LoginController::class, 'index'])->name('login');
+    Route::post('/login/action', [LoginController::class, 'action'])->name('login.action');
+    Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
     Route::get('/kategori-wisata', [KategoriWisataController::class, 'index'])->name('admin.kategori-wisata');
     Route::get('/kategori-wisata/detail/{id}', [KategoriWisataController::class, 'show'])->name('admin.kategori-wisata.detail');
@@ -63,8 +63,6 @@ Route::group([
     Route::post('/pelanggan/update/{id}', [PelangganController::class, 'update'])->name('admin.pelanggan.update');
     Route::get('/pelanggan/delete/{id}', [PelangganController::class, 'destroy'])->name('admin.pelanggan.delete');
 });
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::group([
     'prefix' => '/customer',

@@ -63,6 +63,12 @@ class Wisata extends Model
             ->delete();
     }
 
+    public function countWisata()
+    {
+        $data = DB::table('wisata')->count();
+        return $data;
+    }
+
     // public function countInformasi()
     // {
     //     return InformasiKesehatan::whereNotIn('id_status', [2,3,4,5,6,7])->count();
@@ -112,10 +118,11 @@ class Wisata extends Model
     //         );
     // }
 
-    // public function status()
-    // {
-    //     return $this->belongsTo(Status::class, 'id_status');
-    // }
+    public function kategori_wisata()
+    {
+        return $this->belongsTo(KategoriWisata::class, 'id_kategori_wisata');
+    }
+
     public function transaksi()
     {
         return $this->hasMany(Transaksi::class, 'id_transaksi');

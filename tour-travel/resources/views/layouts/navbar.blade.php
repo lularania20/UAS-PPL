@@ -17,7 +17,7 @@
                 <p style="margin-top: auto; margin-left: 5px;">{{ Auth::user()->email }}</p>
             </a>
             <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                <a href="{{ route('admin.logout') }}" class="dropdown-item dropdown-footer">Logout</a>
+                <a href="{{ route('logout') }}" class="dropdown-item dropdown-footer">Logout</a>
             </div>
         </li>
     </ul>

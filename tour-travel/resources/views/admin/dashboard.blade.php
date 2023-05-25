@@ -25,9 +25,9 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-lg-3 col-6">
-                            <div class="small-box bg-warning">
+                            <div class="small-box bg-primary">
                                 <div class="inner">
-                                    <h3>44</h3>
+                                    <h3>{{ $countWisata }}</h3>
                                     <p>Wisata</p>
                                 </div>
                                     <a href="/admin/wisata" class="small-box-footer">Detail<i class="fas fa-arrow-circle-right"></i></a>
@@ -36,25 +36,25 @@
                         <div class="col-lg-3 col-6">
                             <div class="small-box bg-warning">
                                 <div class="inner">
-                                    <h3>44</h3>
+                                    <h3>{{ $countPaketWisata }}</h3>
                                     <p>Paket Wisata</p>
                                 </div>
                                     <a href="/admin/paket-wisata" class="small-box-footer">Detail<i class="fas fa-arrow-circle-right"></i></a>
                             </div>
                         </div>
                         <div class="col-lg-3 col-6">
-                            <div class="small-box bg-warning">
+                            <div class="small-box bg-danger">
                                 <div class="inner">
-                                    <h3>44</h3>
+                                    <h3>{{ $countPelanggan }}</h3>
                                     <p>Pelanggan</p>
                                 </div>
                                     <a href="/admin/pelanggan" class="small-box-footer">Detail<i class="fas fa-arrow-circle-right"></i></a>
                             </div>
                         </div>
                         <div class="col-lg-3 col-6">
-                            <div class="small-box bg-warning">
+                            <div class="small-box bg-success">
                                 <div class="inner">
-                                    <h3>44</h3>
+                                    <h3>{{ $countTransaksi }}</h3>
                                     <p>Transaksi</p>
                                 </div>
                                     <a href="/admin/transaksi" class="small-box-footer">Detail<i class="fas fa-arrow-circle-right"></i></a>

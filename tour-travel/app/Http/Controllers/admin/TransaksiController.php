@@ -54,8 +54,7 @@ class TransaksiController extends Controller
 
         $data = [
             'paket_wisata' => PaketWisata::all(), 
-            'wisata' => Wisata::all(),
-            'pelanggan' => $this->pelanggan->allData(),
+            'pelanggan' => Pelanggan::all(),
         ];
 
         return view('/admin/transaksi/add', $data);
@@ -74,7 +73,6 @@ class TransaksiController extends Controller
 
         $transaksi = Transaksi::create([
             'id_pelanggan' => Request()->id_pelanggan,
-            'id_wisata' => Request()->id_wisata,
             'id_paket' => Request()->id_paket,
             'id_status' => Request()->id_status,
         ]);

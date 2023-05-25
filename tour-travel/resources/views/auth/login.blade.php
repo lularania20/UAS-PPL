@@ -1,5 +1,7 @@
 @extends('layouts.login')
 
+@section('title', 'Administrator | Login')
+
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -8,7 +10,7 @@
                 <div class="card-header">{{ __('Login') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('admin.login.action') }}">
+                    <form method="POST" action="{{ route('login.action') }}">
                         @csrf
 
                         <div class="row mb-3">
