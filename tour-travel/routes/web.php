@@ -6,7 +6,7 @@ use App\Http\Controllers\admin\KategoriWisataController;
 use App\Http\Controllers\admin\PaketWisataController;
 use App\Http\Controllers\admin\WisataController;
 use App\Http\Controllers\admin\TransaksiController;
-use App\Http\Controllers\admin\LoginController;
+use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\customer\CustomerController;
 
 Route::get('/', [CustomerController::class, 'index'])->name('customer.index');
@@ -14,9 +14,13 @@ Route::get('/', [CustomerController::class, 'index'])->name('customer.index');
 Route::group([
     'prefix' => '/admin',
 ], function () {
-    
+
+    Route::get('/', [DashboardController::class, 'index'])->name('admin.dashboard');
+
     Route::get('/login', [LoginController::class, 'index'])->name('admin.login');
-    Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+    Route::post('/login/action', [LoginController::class, 'action'])->name('admin.login.action');
+    Route::get('/logout', [LoginController::class, 'logout'])->name('admin.logout');
+
     Route::get('/kategori-wisata', [KategoriWisataController::class, 'index'])->name('admin.kategori-wisata');
     Route::get('/kategori-wisata/detail/{id}', [KategoriWisataController::class, 'show'])->name('admin.kategori-wisata.detail');
     Route::get('/kategori-wisata/add', [KategoriWisataController::class, 'add'])->name('admin.kategori-wisata.add');
@@ -51,8 +55,6 @@ Route::group([
     Route::get('/transaksi/approve', [TransaksiController::class, 'updateStatus'])->name('admin.transaksi.approve');
 });
 
-// Auth::routes();
-
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::group([
@@ -64,6 +66,4 @@ Route::group([
     Route::get('/package-detail', [CustomerController::class, 'packageDetail'])->name('customer.packageDetail');
     Route::get('/destination-detail', [CustomerController::class, 'destinationDetail'])->name('customer.destinationDetail');
     Route::get('/checkout', [CustomerController::class, 'checkout'])->name('customer.checkout');
-    Route::get('/login', [CustomerController::class, 'login'])->name('customer.login');
-    Route::get('/register', [CustomerController::class, 'register'])->name('customer.register');
 });
