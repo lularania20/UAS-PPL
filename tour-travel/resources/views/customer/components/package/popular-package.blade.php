@@ -1,66 +1,12 @@
 <div class="row d-flex justify-content-around my-3">
-    <div class="card mb-3" style="width: 18rem;">
-        <img class="card-img-top" src="/gambar_wisata/carousel_1.png" alt="Card image cap">
+    @foreach($data['paket_wisata'] as $key => $item)
+    <div class="card mb-3" style="width: 20rem;">
+        <img class="card-img-top" src="{{ url('gambar_wisata/'.$item->foto_paket) }}" alt="Card image cap" style="width: 15rem, height:15rem;">
         <div class="card-body">
-            <h5>Jatim Park</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="/customer/package-detail" class="btn btn-book btn-primary">Detail</a>
+            <h5>{{ $item->nama_paket }}</h5>
+            <p class="card-text">{{ \Str::limit($item->deskripsi_paket, 200)}}</p>
+            <a href="{{ url('customer/package-detail/'.$item->id)}}" class="btn btn-book btn-primary">Detail</a>
         </div>
-    </div>
-    <div class="card mb-3" style="width: 18rem;">
-        <img class="card-img-top" src="/gambar_wisata/carousel_2.png" alt="Card image cap">
-        <div class="card-body">
-            <h5>Danau Toba</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="/customer/package-detail" class="btn btn-book btn-primary">Detail</a>
-        </div>
-    </div>
-    <div class="card mb-3" style="width: 18rem;">
-        <img class="card-img-top" src="/gambar_wisata/carousel_3.png" alt="Card image cap">
-        <div class="card-body">
-            <h5>Pantai Pandawa</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="/customer/package-detail" class="btn btn-book btn-primary">Detail</a>
-        </div>
-    </div>          
-    <div class="card mb-3" style="width: 18rem;">
-        <img class="card-img-top" src="/gambar_wisata/carousel_1.png" alt="Card image cap">
-        <div class="card-body">
-            <h5>Gunung Bromo</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="/customer/package-detail" class="btn btn-book btn-primary">Detail</a>
-        </div>
-    </div>                  
-    <div class="card mb-3" style="width: 18rem;">
-        <img class="card-img-top" src="/gambar_wisata/carousel_1.png" alt="Card image cap">
-        <div class="card-body">
-            <h5>Jatim Park</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="/customer/package-detail" class="btn btn-book btn-primary">Detail</a>
-        </div>
-    </div>
-    <div class="card mb-3" style="width: 18rem;">
-        <img class="card-img-top" src="/gambar_wisata/carousel_2.png" alt="Card image cap">
-        <div class="card-body">
-            <h5>Danau Toba</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="/customer/package-detail" class="btn btn-book btn-primary">Detail</a>
-        </div>
-    </div>
-    <div class="card mb-3" style="width: 18rem;">
-        <img class="card-img-top" src="/gambar_wisata/carousel_3.png" alt="Card image cap">
-        <div class="card-body">
-            <h5>Pantai Pandawa</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="/customer/package-detail" class="btn btn-book btn-primary">Detail</a>
-        </div>
-    </div>          
-    <div class="card mb-3" style="width: 18rem;">
-        <img class="card-img-top" src="/gambar_wisata/carousel_1.png" alt="Card image cap">
-        <div class="card-body">
-            <h5>Gunung Bromo</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="/customer/package-detail" class="btn btn-book btn-primary">Detail</a>
-        </div>
-    </div>                  
+    </div> 
+    @endforeach
 </div>
