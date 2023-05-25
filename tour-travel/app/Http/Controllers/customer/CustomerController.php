@@ -61,6 +61,7 @@ class CustomerController extends Controller
         //dd($paket_wisata);
         return view('customer.pages.package', compact('data'));
     }
+
     public function destination(Request $request)
     {
         if ($request->has('search')) {
@@ -81,9 +82,6 @@ class CustomerController extends Controller
         return view('customer.pages.destination', compact('data'));
     }
 
-    public function destinationDetail()
-    {
-        return view('customer.pages.destination-detail');
     public function destinationDetail()
     {
         return view('customer.pages.destination-detail');
@@ -108,22 +106,13 @@ class CustomerController extends Controller
     public function checkout()
     {
         return view('customer.pages.checkout');
-    public function checkout()
-    {
-        return view('customer.pages.checkout');
     }
 
     public function register()
     {
         return view('customer.pages.auth-register');
-    public function register()
-    {
-        return view('customer.pages.auth-register');
     }
 
-    public function login()
-    {
-        return view('customer.pages.auth-login');
     public function login()
     {
         return view('customer.pages.auth-login');
