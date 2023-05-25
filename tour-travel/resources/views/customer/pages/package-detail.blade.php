@@ -14,8 +14,8 @@
     <div class="container landing"> 
         <div class="row">
             <div class="col-4 title mt-5">
-                <h2>{{ $paket_wisata->nama_paket }}</h2>
-                <h3 class="mt-5 card-price">Rp. {{ $paket_wisata->harga_paket }} ,-</h3>
+                <h2>Labuan Bajo Tour</h2>
+                <h3 class="mt-5 card-price">Rp 1.090.000</h3>
                 <a href="/customer/checkout" class="btn btn-book btn-primary mt-4">Check Out</a>
             </div>
             <div class="col-8 mt-5">
