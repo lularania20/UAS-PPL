@@ -7,6 +7,7 @@ use App\Http\Controllers\admin\PaketWisataController;
 use App\Http\Controllers\admin\WisataController;
 use App\Http\Controllers\admin\TransaksiController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\admin\PelangganController;
 use App\Http\Controllers\customer\CustomerController;
 
 Route::get('/', [CustomerController::class, 'index'])->name('customer.index');
@@ -53,6 +54,14 @@ Route::group([
     Route::post('/transaksi/update/{id}', [TransaksiController::class, 'update'])->name('admin.transaksi.update');
     Route::get('/transaksi/delete/{id}', [TransaksiController::class, 'destroy'])->name('admin.transaksi.delete');
     Route::get('/transaksi/approve', [TransaksiController::class, 'updateStatus'])->name('admin.transaksi.approve');
+
+    Route::get('/pelanggan', [PelangganController::class, 'index'])->name('admin.pelanggan');
+    Route::get('/pelanggan/detail/{id}', [PelangganController::class, 'show'])->name('admin.pelanggan.detail');
+    Route::get('/pelanggan/add', [PelangganController::class, 'add'])->name('admin.pelanggan.add');
+    Route::post('/pelanggan/save', [PelangganController::class, 'store'])->name('admin.pelanggan.save');
+    Route::get('/pelanggan/edit/{id}', [PelangganController::class, 'edit'])->name('admin.pelanggan.edit');
+    Route::post('/pelanggan/update/{id}', [PelangganController::class, 'update'])->name('admin.pelanggan.update');
+    Route::get('/pelanggan/delete/{id}', [PelangganController::class, 'destroy'])->name('admin.pelanggan.delete');
 });
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

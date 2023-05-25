@@ -36,7 +36,6 @@
                     <tr class="text-center">
                         <th>No</th>
                         <th>Nama Paket Wisata</th>
-                        <!-- <th>Kategori Paket</th> -->
                         <th>Harga Paket</th>
                         <th>Foto Paket</th>
                         <th>Aksi</th>
