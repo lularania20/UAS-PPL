@@ -6,6 +6,7 @@ use App\Http\Controllers\admin\KategoriWisataController;
 use App\Http\Controllers\admin\PaketWisataController;
 use App\Http\Controllers\admin\WisataController;
 use App\Http\Controllers\admin\TransaksiController;
+use App\Http\Controllers\admin\LoginController;
 use App\Http\Controllers\customer\CustomerController;
 
 Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
@@ -13,6 +14,7 @@ Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 Route::group([
     'prefix' => '/admin',
 ], function () {
+    Route::get('/login', [LoginController::class, 'index'])->name('admin.login');
     Route::get('/kategori-wisata', [KategoriWisataController::class, 'index'])->name('admin.kategori-wisata');
     Route::get('/kategori-wisata/detail/{id}', [KategoriWisataController::class, 'show'])->name('admin.kategori-wisata.detail');
     Route::get('/kategori-wisata/add', [KategoriWisataController::class, 'add'])->name('admin.kategori-wisata.add');

@@ -42,13 +42,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="/dashboard" class="nav-link">
-                        <i class="fas fa-user nav-icon"></i>
-                        <p>Status</p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="/dashboard" class="nav-link">
+                    <a href="/admin/transaksi" class="nav-link">
                         <i class="fas fa-user nav-icon"></i>
                         <p>Transaksi</p>
                     </a>
