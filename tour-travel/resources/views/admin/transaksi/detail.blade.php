@@ -59,13 +59,7 @@
                         </tr>
                         @endif
                     </table>
-                    </div>
-                <!-- <div class="col-6">
-                    <tr>
-                        <th width="200px" style="border: none; padding-top: 30px;"> <b>List Wisata</b></th>
-                    </tr>
-                    <textarea class="form-control input-disabled" rows="5" cols="0" placeholder="{{ $transaksi->paket_wisata->nama_wisata_1 }}" value="{{ $transaksi->paket_wisata->nama_wisata_1 }}" disabled=""></textarea>
-                </div> -->
+                </div>
             </div>
                 <table class="table">
                     <tr>
