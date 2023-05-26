@@ -17,7 +17,6 @@ class CustomerController extends Controller
 {
     public function __construct()
     {
-        // $this->middleware('auth');
         $this->kategori_wisata = new KategoriWisata();
         $this->wisata = new Wisata();
         $this->paket_wisata = new PaketWisata();
@@ -39,7 +38,6 @@ class CustomerController extends Controller
         $data = [
             'wisata' => $wisata,
         ];
-        //dd($data);
         return view('customer.pages.landing', compact('data'));
     }
     public function package(Request $request)
@@ -58,7 +56,6 @@ class CustomerController extends Controller
         $data = [
             'paket_wisata' => $paket_wisata,
         ];
-        //dd($paket_wisata);
         return view('customer.pages.package', compact('data'));
     }
 
