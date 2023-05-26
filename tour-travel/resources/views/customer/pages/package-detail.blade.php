@@ -29,7 +29,9 @@
                     <div class="card card-image" style="width: 18rem;">
                         <img src="{{ url('gambar_wisata/'.$paket_wisata->gambar_wisata_1) }}" class="card-img-top" alt="...">
                         <div class="card-body">
-                            <h5 class="card-title">{{ $paket_wisata->nama_wisata_1 }}</h5>
+                            <a a href="{{ url('customer/destination-detail/'.$paket_wisata->id_wisata_1)}}" class="card-title">
+                                <h5 class="card-title">{{ $paket_wisata->nama_wisata_1 }}</h5> 
+                            </a>
                         </div>
                     </div>
                 </a>
@@ -37,7 +39,9 @@
                     <div class="card card-image" style="width: 18rem;">
                         <img src="{{ url('gambar_wisata/'.$paket_wisata->gambar_wisata_2) }}" class="card-img-top" alt="...">
                         <div class="card-body">
-                            <h5 class="card-title">{{ $paket_wisata->nama_wisata_2 }}</h5>
+                            <a href="{{ url('customer/destination-detail/'.$paket_wisata->id_wisata_2)}}" class="card-title">
+                                <h5 class="card-title">{{ $paket_wisata->nama_wisata_2 }}</h5>
+                            </a>
                         </div>
                     </div>
                 </a>
@@ -45,7 +49,9 @@
                     <div class="card card-image" style="width: 18rem;">
                         <img src="{{ url('gambar_wisata/'.$paket_wisata->gambar_wisata_3) }}" class="card-img-top" alt="...">
                         <div class="card-body">
-                            <h5 class="card-title">{{ $paket_wisata->nama_wisata_3 }}</h5>
+                            <a href="{{ url('customer/destination-detail/'.$paket_wisata->id_wisata_3)}}" class="card-title">
+                                <h5 class="card-title">{{ $paket_wisata->nama_wisata_3 }}</h5>
+                            </a>
                         </div>
                     </div>
                 </a>

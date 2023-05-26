@@ -18,6 +18,10 @@
     font-size: 22px;
 }
 
+.card-title {
+    text-decoration: none;
+}
+
 .title {
     align-items: center;
 }
