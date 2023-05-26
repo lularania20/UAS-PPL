@@ -6,11 +6,6 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateTransaksi extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
         Schema::create('transaksi', function (Blueprint $table) {
@@ -25,11 +20,6 @@ class CreateTransaksi extends Migration
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
         Schema::dropIfExists('transaksi');

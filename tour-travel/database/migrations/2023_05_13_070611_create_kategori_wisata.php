@@ -6,11 +6,6 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateKategoriWisata extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
         Schema::create('kategori_wisata', function (Blueprint $table) {
@@ -20,11 +15,6 @@ class CreateKategoriWisata extends Migration
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
         Schema::dropIfExists('kategori_wisata');
