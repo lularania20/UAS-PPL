@@ -16,12 +16,8 @@
     <div class="container landing"> 
         
         <div class="my-5">
-            <h3>Popular Package</h3>
-            @include('customer.components.package.popular-package')
-
-            <h3>Latest Package</h3>
-            @include('customer.components.package.latest-package')
-        </div>  
+            <h3>Destination Package</h3>
+            @include('customer.components.package.popular-package') 
     </div>
 
 @endsection

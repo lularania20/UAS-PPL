@@ -17,7 +17,7 @@ class PaketWisataSeeder extends Seeder
                 'id_wisata_2' => 6,
                 'harga_paket' => 750000,
                 'deskripsi_paket' => "Paket Wisata Liburan ke Malang 2 Hari 1 Malam",
-                'foto_paket' => "../resources/Bromo.png",
+                'foto_paket' => "PaketMalang.png",
                 'created_at' => Carbon::now(),
             ],
             [
@@ -26,7 +26,7 @@ class PaketWisataSeeder extends Seeder
                 'id_wisata_2' => 8,
                 'harga_paket' => 550000,
                 'deskripsi_paket' => "Paket Wisata Liburan ke Keliling Air Terjun Eksotis 1 Hari 1 Malam",
-                'foto_paket' => "../resources/Madakaripura.png",
+                'foto_paket' => "PaketAirTerjun.png",
                 'created_at' => Carbon::now(),
             ],
             [
@@ -35,7 +35,7 @@ class PaketWisataSeeder extends Seeder
                 'id_wisata_2' => 5,
                 'harga_paket' => 1350000,
                 'deskripsi_paket' => "Jelajahi keindahan 2 kantai yang terpisah oleh Laut yang tenang seharian penuh",
-                'foto_paket' => "../resources/PulauMerah.png",
+                'foto_paket' => "PaketPantai.png",
                 'created_at' => Carbon::now(),
             ],
         ];

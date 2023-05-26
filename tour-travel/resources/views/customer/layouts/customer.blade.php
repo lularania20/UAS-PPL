@@ -10,6 +10,9 @@
     <link rel="shortcut icon" href="{{ asset('logo.ico') }}">
     @stack('style')
     
+    <!-- CSS Libraries -->
+    <link rel="stylesheet" href="{{asset('css/customer/footer.css')}}">
+
 </head>
 <body>
     
