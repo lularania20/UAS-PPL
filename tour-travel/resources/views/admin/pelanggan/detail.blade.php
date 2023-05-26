@@ -46,7 +46,7 @@
                 <table class="table">
                     <tr>
                         <th style="border: none">
-                            <a href="{{ route('kemahasiswaan.user.kemahasiswaan') }}" class="btn btn-dark">Kembali</a>
+                            <a href="{{ route('admin.pelanggan') }}" class="btn btn-dark">Kembali</a>
                         </th>
                     </tr>
                 </table>
