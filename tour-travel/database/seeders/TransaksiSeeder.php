@@ -8,11 +8,6 @@ use Illuminate\Support\Facades\DB;
 
 class TransaksiSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
     public function run()
     {
         $transaksi = [

@@ -8,11 +8,6 @@ use Illuminate\Support\Facades\DB;
 
 class PelangganSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
     public function run()
     {
         $pelanggan = [

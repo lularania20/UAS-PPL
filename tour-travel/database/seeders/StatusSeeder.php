@@ -9,11 +9,6 @@ use Illuminate\Support\Facades\Storage;
 
 class StatusSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
     public function run()
     {
         $statuses = [
