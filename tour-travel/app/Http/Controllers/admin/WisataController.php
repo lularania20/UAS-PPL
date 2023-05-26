@@ -46,7 +46,7 @@ class WisataController extends Controller
     public function add()
     {
         $data = [
-            'kategori_wisata' => $this->kategori_wisata->allData(),
+            'kategori_wisata' => KategoriWisata::all(),
         ];
 
         return view('/admin/wisata/add', $data);
@@ -118,11 +118,10 @@ class WisataController extends Controller
         }
 
         $wisata = Wisata::find($id);
-        // $gambar_wisata = Storage::url('public/' . $this->wisata->detailData($id)->gambar_wisata);
 
         $data = [
             'wisata' => $wisata,
-            'kategori_wisata' => $this->kategori_wisata->allData(),
+            'kategori_wisata' => KategoriWisata::all(),
             'kategori' => DB::table('kategori_wisata')->where('id', $wisata->id_kategori_wisata)->first(),
             // 'gambar_wisata' => $gambar_wisata,
         ];
@@ -153,17 +152,12 @@ class WisataController extends Controller
             ]
         );
 
-        $file = Wisata::where('id', $id)->first()->gambar_wisata;
+        $wisata = Wisata::findOrFail($id);
 
-        if ($request->hasFile('gambar_wisata')) {
-            if ($file != null) {
-                $oldfilepath = storage_path('app/public' . '/' . $file);
-                unlink($oldfilepath);
-            }
-            $gambar_wisata = $request->gambar_wisata->store('files', 'public');
-        } else {
-            $gambar_wisata = $file;
-        }
+        $file = $request->file('gambar_wisata');
+        $fileName = $request->nama_wisata . '.' . $file->getClientOriginalExtension();
+        $file->move(public_path('gambar_wisata'), $fileName);
+
 
         $data = [
             'nama_wisata' => Request()->nama_wisata,
@@ -171,13 +165,13 @@ class WisataController extends Controller
             'deskripsi_wisata' => Request()->editor1,
             'harga_wisata' => Request()->harga_wisata,
             'alamat_wisata' => Request()->alamat_wisata,
-            'gambar_wisata' => $gambar_wisata,
+            'gambar_wisata' => $fileName,
         ];
 
         $wisata = Wisata::where('id', $id)->update($data);
 
         if ($wisata) {
-            Alert::success('Sukses!', 'Data wisata Kesehatan Berhasil Diubah!');
+            Alert::success('Sukses!', 'Data Wisata Berhasil Diubah!');
         }
 
         return redirect('/admin/wisata');
@@ -191,15 +185,12 @@ class WisataController extends Controller
             abort(404);
         }
 
-        // Check if the Wisata is associated with any PaketWisata
         $paket_wisata = PaketWisata::where('id_wisata_1', $wisata->id)
             ->orWhere('id_wisata_2', $wisata->id)
             ->orWhere('id_wisata_3', $wisata->id)
-            ->orWhere('id_wisata_4', $wisata->id)
             ->get();
 
         if ($paket_wisata->count() > 0) {
-            // Update the related PaketWisata records to remove the association with this Wisata
             $paket_wisata->each(function ($paket) use ($wisata) {
                 if ($paket->id_wisata_1 == $wisata->id) {
                     $paket->id_wisata_1 = null;
@@ -210,9 +201,6 @@ class WisataController extends Controller
                 if ($paket->id_wisata_3 == $wisata->id) {
                     $paket->id_wisata_3 = null;
                 }
-                if ($paket->id_wisata_4 == $wisata->id) {
-                    $paket->id_wisata_4 = null;
-                }
                 $paket->save();
             });
         }
@@ -220,7 +208,7 @@ class WisataController extends Controller
         // Delete the Wisata
         $wisata->delete();
 
-        return redirect()->route('admin.wisata.index')->with('success', 'Wisata deleted successfully');
+        return redirect()->route('admin.wisata.index')->with('success', 'Data Wisata Berhasil DIhapus!');
     }
 
 

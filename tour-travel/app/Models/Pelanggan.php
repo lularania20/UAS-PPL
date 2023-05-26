@@ -20,18 +20,10 @@ class Pelanggan extends Model
         'alamat',
     ];
 
-    public function getData()
-    {
-        return DB::table('pelanggan')
-            ->select('pelanggan')
-            ->get();
-    }
-
     public function detailData($id)
     {
-        return $this->getData()
-            ->where('id', $id)
-            ->first();
+        return DB::table('pelanggan')
+            ->where('pelanggan.id', $id)->first();
     }
 
     public function addData($data)

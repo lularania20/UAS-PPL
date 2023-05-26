@@ -18,7 +18,7 @@
             <h3 class="card-title"><b>Edit Wisata</b></h3>
         </div>
         <div class="card-body">
-            <form action="{{ route('admin.wisata.update', $wisata->id) }}" method="post">
+            <form action="{{ route('admin.wisata.update', $wisata->id) }}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="row">
                     <div class="col-12">
