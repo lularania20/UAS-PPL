@@ -62,16 +62,6 @@
                             <th style="border: none"><img src="{{ url('gambar_wisata/'.$paket_wisata->gambar_wisata_3) }}" width="100px"></th>
                         </tr>
                         <tr>
-                            <th width="150px" style="border: none">List Wisata 4</th>
-                            <th width="30px" style="border: none">:</th>
-                            <th style="border: none">{{ $paket_wisata->nama_wisata_4 }}</th>
-                        </tr>
-                        <tr>
-                            <th width="150px" style="border: none">Foto Wisata 4</th>
-                            <th width="30px" style="border: none">:</th>
-                            <th style="border: none"><img src="{{ url('gambar_wisata/'.$paket_wisata->gambar_wisata_4) }}" width="100px"></th>
-                        </tr>
-                        <tr>
                             <th width="150px" style="border: none">Harga Paket Wisata</th>
                             <th width="30px" style="border: none">:</th>
                             <th style="border: none">{{ $paket_wisata->harga_paket }}</th>

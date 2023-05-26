@@ -183,7 +183,7 @@ class PaketWisataController extends Controller
 
         $paket_wisata->delete();
 
-        return redirect()->route('admin.paket-wisata.index')
+        return redirect()->route('admin.paket-wisata')
             ->with('success', 'Paket Wisata Berhasil Dihapus');
     }
 

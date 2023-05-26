@@ -31,7 +31,7 @@
                                 @enderror
                             </div>
                         </div>
-                        @for ($i = 1; $i <= 4; $i++)
+                        @for ($i = 1; $i <= 3; $i++)
                             <div class="form-group">
                                 <label>List Wisata {{ $i }}</label>
                                 <select class="form-control theSelect" name="id_wisata_{{ $i }}">
