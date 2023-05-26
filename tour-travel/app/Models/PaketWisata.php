@@ -14,7 +14,6 @@ class PaketWisata extends Model
     public $table = 'paket_wisata';
     protected $primaryKey = 'id';
     protected $fillable = [
-        // 'id_kategori_paket',
         'nama_paket',
         'id_wisata_1',
         'id_wisata_2',

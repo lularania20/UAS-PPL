@@ -14,11 +14,8 @@ class Pelanggan extends Model
     public $table = 'pelanggan';
     protected $primaryKey = 'id';
     protected $fillable = [
-        // 'id_user',
-        // 'id_role',
         'nama',
         'email',
-        // 'password',
         'telepon',
         'alamat',
     ];
@@ -36,15 +33,6 @@ class Pelanggan extends Model
             ->where('id', $id)
             ->first();
     }
-
-    // public function rekamMedis()
-    // {
-    //     return DB::table('pelanggan')
-    //     ->join('permohonan_layanans','pelanggan.id', '=', 'permohonan_layanans.id_mahasiswa')
-    //     ->select('nama', 'nrp')->where('id_mahasiswa')
-    //     ->distinct();
-    //     // ->join('pelanggan','pelanggan.id', '=', 'permohonan_layanans.id_mahasiswa');
-    // }
 
     public function addData($data)
     {
@@ -69,15 +57,6 @@ class Pelanggan extends Model
         return $data;
     }
 
-    // public function user()
-    // {
-    //     return $this->belongsTo(User::class, 'id_user');
-    // }
-
-    // public function mahasiswa()
-    // {
-    //     return $this->belongsTo(PermohonanLayanan::class, 'id_mahasiswa');
-    // }
     public function deleteData($id)
     {
         return DB::table('pelanggan')

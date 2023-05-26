@@ -69,55 +69,6 @@ class Wisata extends Model
         return $data;
     }
 
-    // public function countInformasi()
-    // {
-    //     return InformasiKesehatan::whereNotIn('id_status', [2,3,4,5,6,7])->count();
-    // }
-
-    // public function countInformasiByStatus($status_id)
-    // {
-    //     return InformasiKesehatan::where('id_status', [$status_id])->count();
-    // }
-
-    // public function getAllGrafik()
-    // {
-    //     return
-    //        InformasiKesehatan::whereYear('created_at', Carbon::now()->year)
-    //         ->whereNotIn('id_status', [2,3,4,5,6,7])
-    //         ->orderBy('created_at', 'asc')
-    //         ->get()
-    //         ->groupBy(
-    //             function ($date) {
-    //                 return Carbon::parse($date->created_at)
-    //                     ->format('M');
-    //             }
-    //         );
-    // }
-
-    // public function getAxisGrafik()
-    // {
-    //     return
-    //        InformasiKesehatan::whereMonth('created_at', Carbon::now()->month)
-    //         ->whereNotIn('id_status', [2,3,4,5,6,7])
-    //         ->orderBy('created_at', 'asc')
-    //         ->get();
-    // }
-
-    // public function getDataGrafik($status_id)
-    // {
-    //     return
-    //        InformasiKesehatan::whereYear('created_at', Carbon::now()->year)
-    //         ->where('id_status', $status_id)
-    //         ->orderBy('created_at', 'asc')
-    //         ->get()
-    //         ->groupBy(
-    //             function ($date) {
-    //                 return Carbon::parse($date->created_at)
-    //                     ->format('M');
-    //             }
-    //         );
-    // }
-
     public function kategori_wisata()
     {
         return $this->belongsTo(KategoriWisata::class, 'id_kategori_wisata');
