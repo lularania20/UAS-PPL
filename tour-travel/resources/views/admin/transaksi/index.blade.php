@@ -24,6 +24,39 @@
 @endsection
 
 @section('content')
+<div class="card">
+        <div class="card-header">
+            <h3 class="card-title"> <b>Akumulasi Data</b></h3>
+            <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                    <i class="fas fa-minus"></i>
+                </button>
+            </div>
+        </div>
+        <div class="card-body">
+            <section class="content">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col">
+                            <div class="small-box bg-danger">
+                                <div class="inner">
+                                    <h3>{{ $countTransaksiByStatus1 }}</h3>
+                                    <p>Transaksi Belum Dibayar </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="small-box bg-success">
+                                <div class="inner">
+                                <h3>{{ $countTransaksiByStatus2 }}</h3>
+                                    <p>Transaksi Sudah Lunas</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+</div>
     <div class="card">
         <div class="card-header">
             <h3 class="card-title"> <b>Data Transaksi</b></h3>

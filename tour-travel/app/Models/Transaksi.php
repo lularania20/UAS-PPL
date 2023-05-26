@@ -100,6 +100,12 @@ class Transaksi extends Model
         return $data;
     }
 
+    public function countTransaksibyStatus($id_status)
+    {
+        $data = DB::table('transaksi')->where('id_status', $id_status)->count();
+        return $data;
+    }
+
     public function status()
     {
         return $this->belongsTo(Status::class, 'id_status');
