@@ -19,3 +19,12 @@
     color: white;
     margin-left: 50px;
 }
+
+.login-admin {
+    font-size: 12px;
+}
+
+.login-href {
+    color: #00bbcc;
+    text-decoration: none;
+}

@@ -17,6 +17,10 @@
                 Raya ITS, Sukolilo Surabaya <br/>
                 0812 3021 0480
             </p>
+            <p class="login-admin">
+                Are you an Admin?
+                <a href="/admin" class="login-href">Login</a>
+            </p>
         </div>
     </div>
 </div>
