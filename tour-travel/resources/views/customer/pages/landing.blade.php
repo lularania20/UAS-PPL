@@ -16,14 +16,9 @@
     <div class="container landing"> 
         
         <div class="my-5">
-            <h3>Popular Destination</h3>
+            <h3>Our Destination</h3>
             @include('customer.components.landing.card-destination')
         </div>  
-
-        <div>
-            <h3>Popular Package</h3>
-            @include('customer.components.landing.card-package')
-        </div>
     </div>
 
 @endsection
