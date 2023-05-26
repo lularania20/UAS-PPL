@@ -15,7 +15,7 @@ class PaketWisataController extends Controller
 {
     public function __construct()
     {
-       // $this->middleware('auth');
+        $this->middleware('auth');
         $this->wisata = new Wisata();
         $this->paket_wisata = new PaketWisata();
     }
@@ -35,7 +35,7 @@ class PaketWisataController extends Controller
         }
 
         $data = [
-            'paket_wisata' =>$paket_wisata,
+            'paket_wisata' => $paket_wisata,
         ];
 
 
@@ -45,7 +45,7 @@ class PaketWisataController extends Controller
     public function add()
     {
         $wisata = Wisata::select('id', 'nama_wisata')->get();
-    
+
         return view('/admin/paket-wisata/add', compact('wisata'));
     }
 
@@ -74,7 +74,7 @@ class PaketWisataController extends Controller
 
         $file = Request()->foto_paket;
         $fileName = Request()->nama_paket . '.' . $file->extension();
-        $file -> move(public_path('foto_paket'), $fileName);
+        $file->move(public_path('foto_paket'), $fileName);
 
         $paket_wisata = PaketWisata::create([
             'nama_paket' => Request()->nama_paket,

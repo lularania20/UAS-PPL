@@ -17,7 +17,7 @@ class WisataController extends Controller
 {
     public function __construct()
     {
-        // $this->middleware('auth');
+        $this->middleware('auth');
         $this->kategori_wisata = new KategoriWisata();
         $this->wisata = new Wisata();
     }
@@ -37,7 +37,7 @@ class WisataController extends Controller
         }
 
         $data = [
-            'wisata' =>$wisata,
+            'wisata' => $wisata,
         ];
 
         return view('/admin/wisata/index', $data);
@@ -77,7 +77,7 @@ class WisataController extends Controller
 
         $file = Request()->gambar_wisata;
         $fileName = Request()->nama_wisata . '.' . $file->extension();
-        $file -> move(public_path('gambar_wisata'), $fileName);
+        $file->move(public_path('gambar_wisata'), $fileName);
 
         $wisata = Wisata::create([
             'nama_wisata' => Request()->nama_wisata,
@@ -138,7 +138,7 @@ class WisataController extends Controller
                 'editor1' => 'required',
                 'harga_wisata' => 'required',
                 'gambar_wisata' => 'required|file|max:2048|mimes:jpeg,jpg,png',
-                'alamat_wisata' => 'required',        
+                'alamat_wisata' => 'required',
             ],
             [
                 'nama_wisata' => 'Wajib terisi',
@@ -266,7 +266,7 @@ class WisataController extends Controller
     //     $data = [
     //         'wisata' => $this->wisata->detailData($id),
     //     ];
-        
+
     //     return view('/pengurus_tekkes/wisata/detail', $data);
     //     // return view('/mahasiswa/wisata-kesehatan');
     // }

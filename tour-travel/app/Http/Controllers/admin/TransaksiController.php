@@ -19,6 +19,7 @@ class TransaksiController extends Controller
 {
     public function __construct()
     {
+        $this->middleware('auth');
         $this->transaksi = new Transaksi();
         $this->paket_wisata = new PaketWisata();
         $this->wisata = new Wisata();
@@ -28,13 +29,14 @@ class TransaksiController extends Controller
     public function index(Request $request)
     {
         $colors = [
-            'danger', 'success'
+            'danger',
+            'success'
         ];
 
         if ($request->has('search')) {
             $transaksi = Transaksi::with(['status', 'wisata', 'paket_wisata', 'pelanggan'])
-            ->whereRelation('pelanggan', 'nama', 'LIKE', '%' . $request->search . '%')
-            ->paginate(20);
+                ->whereRelation('pelanggan', 'nama', 'LIKE', '%' . $request->search . '%')
+                ->paginate(20);
         } else {
             $transaksi = Transaksi::with(['status', 'wisata', 'paket_wisata', 'pelanggan'])->paginate(20);
         }
@@ -46,7 +48,7 @@ class TransaksiController extends Controller
             'pelanggan' => $this->pelanggan->allData(),
             'countTransaksiByStatus1' => $this->transaksi->countTransaksiByStatus(1),
             'countTransaksiByStatus2' => $this->transaksi->countTransaksiByStatus(2),
-        ];  
+        ];
 
         return view('admin.transaksi.index', $data);
     }
@@ -55,7 +57,7 @@ class TransaksiController extends Controller
     {
 
         $data = [
-            'paket_wisata' => PaketWisata::all(), 
+            'paket_wisata' => PaketWisata::all(),
             'pelanggan' => Pelanggan::all(),
         ];
 
@@ -106,41 +108,41 @@ class TransaksiController extends Controller
     {
         $transaksi = Transaksi::findOrFail($request->id_transaksi);
 
-        if ($transaksi->id_status != ((int)$request->id_status)) {
+        if ($transaksi->id_status != ((int) $request->id_status)) {
             $transaksi->id_status = $request->id_status;
-        
+
             if ($request->has('keterangan_pembayaran')) {
                 $request->validate([
                     'keterangan_pembayaran' => 'required',
                 ], [
-                    'keterangan_pembayaran.required' => 'Mohon isi keterangan pembayaran.',
-                ]);
-        
+                        'keterangan_pembayaran.required' => 'Mohon isi keterangan pembayaran.',
+                    ]);
+
                 $transaksi->keterangan_pembayaran = $request->keterangan_pembayaran;
             } else {
                 $transaksi->keterangan_pembayaran = null;
             }
-        
+
             if ($request->has('tanggal_keberangkatan')) {
                 $request->validate([
                     'tanggal_keberangkatan' => 'required|date',
                 ], [
-                    'tanggal_keberangkatan.required' => 'Mohon isi tanggal keberangkatan.',
-                    'tanggal_keberangkatan.date' => 'Format tanggal keberangkatan tidak valid.',
-                ]);
-        
+                        'tanggal_keberangkatan.required' => 'Mohon isi tanggal keberangkatan.',
+                        'tanggal_keberangkatan.date' => 'Format tanggal keberangkatan tidak valid.',
+                    ]);
+
                 $transaksi->tanggal_keberangkatan = $request->tanggal_keberangkatan;
             } else {
                 $transaksi->tanggal_keberangkatan = null;
             }
-        
+
 
             if ($transaksi->save()) {
                 return response()->json([
                     'success' => true,
                     'message' => 'Status Transaksi Lunas!',
                 ]);
-            }    
+            }
         }
     }
-} 
+}

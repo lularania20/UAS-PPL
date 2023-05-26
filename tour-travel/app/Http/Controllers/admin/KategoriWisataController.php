@@ -11,7 +11,7 @@ class KategoriWisataController extends Controller
 {
     public function __construct()
     {
-        // $this->middleware('auth');
+        $this->middleware('auth');
         $this->kategori_wisata = new KategoriWisata();
     }
 
