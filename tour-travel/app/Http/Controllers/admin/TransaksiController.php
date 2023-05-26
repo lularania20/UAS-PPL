@@ -44,6 +44,8 @@ class TransaksiController extends Controller
             'colors' => $colors,
             'opsi_status' => Status::all(),
             'pelanggan' => $this->pelanggan->allData(),
+            'countTransaksiByStatus1' => $this->transaksi->countTransaksiByStatus(1),
+            'countTransaksiByStatus2' => $this->transaksi->countTransaksiByStatus(2),
         ];  
 
         return view('admin.transaksi.index', $data);
