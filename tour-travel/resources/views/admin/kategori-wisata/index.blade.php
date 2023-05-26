@@ -83,7 +83,6 @@
             </div>
             @endif
         </div>
-        <!-- /.card-body -->
     </div>
 
     @foreach ($kategori_wisata as $data)
@@ -104,9 +103,7 @@
                         <a href="{{ route('admin.kategori-wisata.delete', $data->id) }}" class="btn btn-sm btn-danger">Hapus</a>
                     </div>
                 </div>
-                <!-- /.modal-content -->
             </div>
-            <!-- /.modal-dialog -->
         </div>
     @endforeach
 @endsection

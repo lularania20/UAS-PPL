@@ -39,6 +39,5 @@
                 </div>
             </form>
         </div>
-        <!-- /.card-body -->
     </div>
 @endsection

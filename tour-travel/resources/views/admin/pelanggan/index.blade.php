@@ -103,9 +103,7 @@
                         <a href="/admin/pelanggan/delete/{{ $data->id }}" class="btn btn-sm btn-danger">Hapus</a>
                     </div>
                 </div>
-                <!-- /.modal-content -->
             </div>
-            <!-- /.modal-dialog -->
         </div>
     @endforeach
 @endsection
