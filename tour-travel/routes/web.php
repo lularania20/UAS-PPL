@@ -71,7 +71,7 @@ Route::group([
     Route::get('/package', [CustomerController::class, 'package'])->name('customer.package');
     Route::get('/destination', [CustomerController::class, 'destination'])->name('customer.destination');
     Route::get('/package-detail/{id}', [CustomerController::class, 'packageDetail'])->name('customer.packageDetail');
-    Route::get('/destination-detail', [CustomerController::class, 'destinationDetail'])->name('customer.destinationDetail');
+    Route::get('/destination-detail/{id}', [CustomerController::class, 'destinationDetail'])->name('customer.destinationDetail');
     Route::get('/checkout', [CustomerController::class, 'checkout'])->name('customer.checkout');
     Route::get('/login', [CustomerController::class, 'login'])->name('customer.login');
     Route::get('/register', [CustomerController::class, 'register'])->name('customer.register');

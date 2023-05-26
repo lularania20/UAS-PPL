@@ -14,30 +14,16 @@
     <div class="container landing"> 
         <div class="row">
             <div class="col-4 title mt-5">
-                <h2>Gunung Tabuhan Perahu</h2>
-                <p>Jalan Sejahtera <br/>Bandung, Jawa Barat</p>
-                <h3 class="mt-5 card-price">Rp 1.090.000</h3>
-                <a href="/customer/checkout" class="btn btn-book btn-primary mt-4">Check Out</a>
+                <h2>{{ $wisata->nama_wisata }}</h2>
+                <h3 class="mt-5 card-price">Rp. {{ $wisata->harga_wisata }},-</h3>
             </div>
-            <div class="col-4 mt-5">
-                <img src="/gambar_wisata/carousel_1.png" class="card-img img-fluid">
-            </div>
-            <div class="col-4 mt-5">
-                <img src="/gambar_wisata/carousel_1.png" class="card-img img-fluid">
+            <div class="col-6 mt-5">
+                <img src="{{ url('gambar_wisata/'.$wisata->gambar_wisata) }}" class="card-img img-fluid">
             </div>
         </div>
         <div>
             <h3>Deskripsi</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse nibh purus, lacinia vel tempor interdum, 
-                finibus ac nulla. Vestibulum consectetur magna eu eros consectetur, vel commodo sem vestibulum.
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse nibh purus, lacinia vel tempor interdum, 
-                finibus ac nulla. Vestibulum consectetur magna eu eros consectetur, vel commodo sem vestibulum. 
-            </p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse nibh purus, lacinia vel tempor interdum, 
-                finibus ac nulla. Vestibulum consectetur magna eu eros consectetur, vel commodo sem vestibulum.
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse nibh purus, lacinia vel tempor interdum, 
-                finibus ac nulla. Vestibulum consectetur magna eu eros consectetur, vel commodo sem vestibulum. 
-            </p>
+            <p>{{ $wisata->deskripsi_wisata }}</p>
         </div>
     </div>
 @endsection

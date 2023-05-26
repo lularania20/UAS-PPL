@@ -16,10 +16,10 @@
             <div class="col-4 title mt-5">
                 <h2>{{ $paket_wisata->nama_paket }}</h2>
                 <h3 class="mt-5 card-price">Rp. {{ $paket_wisata->harga_paket }} ,-</h3>
-                <a href="/customer/checkout" class="btn btn-book btn-primary mt-4">Check Out</a>
+                <a href="https://wa.me/6281999384527" class="btn btn-book btn-primary mt-4">Check Out</a>
             </div>
             <div class="col-8 mt-5">
-                <img src="{{ url('gambar_wisata/'.$paket_wisata->foto_paket) }}" class="card-img img-fluid">
+                <img src="{{ url('foto_paket/'.$paket_wisata->foto_paket) }}" class="card-img img-fluid">
             </div>
         </div>
         <div class="my-3">

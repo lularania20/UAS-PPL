@@ -35,10 +35,13 @@ class PaketWisata extends Model
                 'paket_wisata.*',
                 'w1.nama_wisata as nama_wisata_1',
                 'w1.gambar_wisata as gambar_wisata_1',
+                'w1.deskripsi_wisata as deskripsi_wisata_1',
                 'w2.nama_wisata as nama_wisata_2',
                 'w2.gambar_wisata as gambar_wisata_2',
+                'w2.deskripsi_wisata as deskripsi_wisata_2',
                 'w3.nama_wisata as nama_wisata_3',
                 'w3.gambar_wisata as gambar_wisata_3',
+                'w3.deskripsi_wisata as deskripsi_wisata_3',
             );
     }
 

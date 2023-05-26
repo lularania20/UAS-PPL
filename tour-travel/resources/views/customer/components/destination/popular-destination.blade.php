@@ -5,7 +5,7 @@
         <div class="card-body">
             <h5>{{ $item->nama_wisata }}</h5>
             <p class="card-text">{{ \Str::limit($item->deskripsi_wisata, 200)}}</p>
-            <a href="/customer/destination-detail" class="btn btn-book btn-primary">Detail</a>
+            <a href="{{ url('customer/destination-detail/'.$item->id)}}" class="btn btn-book btn-primary">Detail</a>
         </div>
     </div> 
     @endforeach                

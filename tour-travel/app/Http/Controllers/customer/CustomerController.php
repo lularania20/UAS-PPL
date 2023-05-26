@@ -82,9 +82,18 @@ class CustomerController extends Controller
         return view('customer.pages.destination', compact('data'));
     }
 
-    public function destinationDetail()
+    public function destinationDetail($id)
     {
-        return view('customer.pages.destination-detail');
+        if (!$this->wisata->detailData($id)) {
+            abort(404);
+        }
+
+        $wisata = $this->wisata->detailData($id);
+        $data = [
+            'wisata' => $this->wisata->detailData($id),
+        ];
+
+        return view('customer.pages.destination-detail', $data);
     }
 
     public function packageDetail($id)
